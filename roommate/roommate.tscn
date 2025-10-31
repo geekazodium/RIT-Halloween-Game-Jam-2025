@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpfcifw7tvbxx"]
+
+[ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
+[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
+[ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
+[ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0spho"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
+radius = 6.7559624
+
+[node name="Roommate" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_f53c4")
+metadata/_custom_type_script = "uid://j8am2d5qhph7"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0spho")
+
+[node name="PlaceHolderShape3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.74765056, 0, 0, 0, 1.5145504, 0, 0, 0, 1.9677868, 0, 0, 0)
+texture = ExtResource("2_a3oh8")
+
+[node name="PlayerDetector3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_cw58l")
+metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector3D"]
+shape = SubResource("SphereShape3D_ae4i6")
+
+[node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node")]
+script = ExtResource("4_a3oh8")
+nav_agent = NodePath("../NavigationAgent3D")
+current_position_node = NodePath("..")
+metadata/_custom_type_script = "uid://dm05esq75t5ue"
