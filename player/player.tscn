@@ -177,7 +177,7 @@ animations = [{
 }]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g1dw6"]
-height = 0.53216743
+height = 0.58421373
 radius = 0.17480469
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g1dw6"]
@@ -194,7 +194,7 @@ sprite_frames = SubResource("SpriteFrames_8t03j")
 animation = &"holding_standing_back"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024975777, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0010473728, 0)
 shape = SubResource("CylinderShape3D_g1dw6")
 
 [node name="PlayerWishDir" type="Node" parent="." node_paths=PackedStringArray("sprite")]
