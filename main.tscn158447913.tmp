@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c26csylq2grx0"]
+[gd_scene load_steps=4 format=3 uid="uid://c26csylq2grx0"]
 
 [ext_resource type="Script" uid="uid://w5h1cxib8cw7" path="res://camera.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://test room.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="3_h2yge"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -10,3 +11,6 @@ transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64
 script = ExtResource("1_0xm2m")
 
 [node name="TestRoom" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Player" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94044137, 0, -0.2537532)
