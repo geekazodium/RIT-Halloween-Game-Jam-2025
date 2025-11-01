@@ -8,6 +8,7 @@ size = Vector3(0.28979492, 0.30595398, 0.10394287)
 [node name="Toilet" type="StaticBody3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
 texture = ExtResource("1_ckcud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

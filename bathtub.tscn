@@ -12,4 +12,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015615463, -0.05239868, -0.
 shape = SubResource("BoxShape3D_pmh6k")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
 texture = ExtResource("1_gk7l8")
