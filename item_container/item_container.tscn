@@ -5,6 +5,9 @@
 
 [node name="ItemContainer" type="Node3D"]
 script = ExtResource("1_7us4m")
+metadata/_custom_type_script = "uid://dybts4oglrh5y"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("2_m8hp2")
+
+[node name="ItemHolder" type="Node3D" parent="."]

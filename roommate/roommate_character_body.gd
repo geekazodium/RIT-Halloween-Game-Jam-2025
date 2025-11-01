@@ -12,7 +12,6 @@ var suspicion: float:
 @export var input_force_strength: float = 10;
 
 func _get_ideal_speed() -> float:
-	print(self.suspicion);
 	return self.ideal_speed;
 
 func _get_input_force_strength() -> float:
