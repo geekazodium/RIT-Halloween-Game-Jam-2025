@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c26csylq2grx0"]
 
-[ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://rooms/room.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="3_h2yge"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="TestRoom" parent="." instance=ExtResource("1_ig7tw")]
-size = Vector3(5, 2, 3)
-door1_active = true
-door2_active = true
-door3_active = true
-
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
+
+[node name="Room" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0383489, 0, -0.23210406)
+
+[node name="Room2" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, -0.24184656)
