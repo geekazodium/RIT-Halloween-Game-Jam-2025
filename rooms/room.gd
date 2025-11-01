@@ -15,10 +15,10 @@ var faces : Array
 @export var door3_active : bool = false
 
 @export_category("textures")
-@export var floor_texture : StandardMaterial3D
-@export var wall1_texture : StandardMaterial3D
-@export var wall2_texture : StandardMaterial3D
-@export var wall3_texture : StandardMaterial3D
+@export var floor_texture : Material
+@export var wall1_texture : Material
+@export var wall2_texture : Material
+@export var wall3_texture : Material
 
 @onready var collider_shape : CollisionShape3D = $StaticBody3D/CollisionShape3D
 @onready var combiner :CSGCombiner3D = $CSGCombiner3D
@@ -119,7 +119,6 @@ func resize():
 	faces[3].visible = false
 	
 	if floor_texture != null:
-		floor_texture.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 		faces[0].material = floor_texture
 	if wall1_texture != null:
 		faces[1].material = wall1_texture
