@@ -68,6 +68,10 @@ pause={
 3d_physics/layer_2="Player"
 3d_physics/layer_6="Suspicious"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
