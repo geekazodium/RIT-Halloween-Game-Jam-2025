@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvkfb6p8rrrwb"]
+[gd_scene load_steps=4 format=3 uid="uid://dvkfb6p8rrrwb"]
 
 [ext_resource type="Script" uid="uid://ckukrgykl8uua" path="res://pause_menu/pause_menu.gd" id="1_hdmo1"]
 [ext_resource type="Texture2D" uid="uid://ds4y0ykv5heqj" path="res://pause_menu/textures/pause_screen.png" id="2_rd7dy"]
+[ext_resource type="Texture2D" uid="uid://c614evxtp3elb" path="res://pause_menu/textures/unchecked.png" id="3_uwtdo"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_menu")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_menu", "resume_image", "exit_image")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -11,6 +12,8 @@ offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("1_hdmo1")
 pause_menu = NodePath(".")
+resume_image = NodePath("ResumeBox")
+exit_image = NodePath("ExitBox")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -28,20 +31,40 @@ stretch_mode = 2
 [node name="Resume" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 548.0
-offset_top = 281.0
-offset_right = 752.0
-offset_bottom = 344.0
+offset_left = 470.0
+offset_top = 275.0
+offset_right = 768.0
+offset_bottom = 354.0
 text = "Resume"
 
 [node name="Quit" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 544.0
-offset_top = 382.0
-offset_right = 716.0
-offset_bottom = 451.0
+offset_left = 483.0
+offset_top = 379.0
+offset_right = 722.0
+offset_bottom = 474.0
 text = "Quit"
 
+[node name="ResumeBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 266.0
+offset_right = 556.0
+offset_bottom = 348.0
+texture = ExtResource("3_uwtdo")
+
+[node name="ExitBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 376.0
+offset_right = 560.0
+offset_bottom = 458.0
+texture = ExtResource("3_uwtdo")
+
+[connection signal="mouse_entered" from="Resume" to="." method="_on_resume_mouse_entered"]
+[connection signal="mouse_exited" from="Resume" to="." method="_on_resume_mouse_exited"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
