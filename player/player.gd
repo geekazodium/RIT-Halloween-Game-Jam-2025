@@ -1,7 +1,7 @@
 extends UMCharacterBody3D
 class_name Player
 
-@export var ideal_speed: float = 5;
+@export var ideal_speed: float = 2;
 @export var input_force_strength: float = 10;
 
 func _get_ideal_speed() -> float:
