@@ -10,9 +10,10 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
 radius = 6.7559624
 
-[node name="Roommate" type="CharacterBody3D"]
+[node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
 collision_layer = 0
 script = ExtResource("1_f53c4")
+movement_direction = NodePath("RoommateWishDir")
 metadata/_custom_type_script = "uid://j8am2d5qhph7"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
