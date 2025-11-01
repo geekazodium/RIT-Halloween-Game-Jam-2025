@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c26csylq2grx0"]
+
+[ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://test room.tscn" id="1_ig7tw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0.75, 2)
+fov = 90.0
+
+[node name="TestRoom" parent="." instance=ExtResource("1_ig7tw")]
