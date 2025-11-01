@@ -8,15 +8,15 @@ var held_item: Item = null
 var looking_forward = true
 
 func _physics_process(_delta: float) -> void:
-	self.direction_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if direction_vec.y == 1:
+	self.direction_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down");
+	if sign(direction_vec.y) == 1:
 		looking_forward = true
-	elif direction_vec.y == -1:
+	elif sign(direction_vec.y) == -1:
 		looking_forward = false
 	
-	if direction_vec.x == 1:
+	if sign(direction_vec.x) == 1:
 		sprite.flip_h = true
-	elif direction_vec.x == -1:
+	elif sign(direction_vec.x) == -1:
 		sprite.flip_h = false
 	
 	var animation = ""
