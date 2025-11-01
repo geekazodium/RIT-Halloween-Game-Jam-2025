@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dx4o1ax6wcvku"]
 
-[ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://test room.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://rooms/test room.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bpfcifw7tvbxx" path="res://roommate/roommate.tscn" id="2_0xm2m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]

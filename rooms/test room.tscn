@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu21suu50eed5"]
+
+[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="1_e3p1l"]
+[ext_resource type="Script" uid="uid://3miwwkl1xlpw" path="res://rooms/room.gd" id="1_qefgp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qefgp"]
+data = PackedVector3Array(2.5, 1, 2, -2.5, 1, 2, -2.5, -1, 2, 2.5, -1, 2, 2.5, 1, 2, -2.5, -1, 2, -2.5, 1, -2, 2.5, 1, -2, 2.5, -1, -2, -2.5, -1, -2, -2.5, 1, -2, 2.5, -1, -2, 2.5, 1, -2, 2.5, 1, 2, 2.5, -1, 2, 2.5, -1, -2, 2.5, 1, -2, 2.5, -1, 2, -2.5, 1, 2, -2.5, 1, -2, -2.5, -1, -2, -2.5, -1, 2, -2.5, 1, 2, -2.5, -1, -2, -2.5, 1, 2, 2.5, 1, 2, 2.5, 1, -2, -2.5, 1, -2, -2.5, 1, 2, 2.5, 1, -2, 2.5, -1, 2, -2.5, -1, 2, -2.5, -1, -2, 2.5, -1, -2, 2.5, -1, 2, -2.5, -1, -2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trxi4"]
+shading_mode = 0
+albedo_texture = ExtResource("1_e3p1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyat4"]
+shading_mode = 0
+albedo_texture = ExtResource("1_e3p1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4ag"]
+shading_mode = 0
+albedo_texture = ExtResource("1_e3p1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5skio"]
+shading_mode = 0
+albedo_texture = ExtResource("1_e3p1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swjo3"]
+shading_mode = 0
+albedo_texture = ExtResource("1_e3p1l")
+
+[node name="TestRoom" type="Node3D"]
+script = ExtResource("1_qefgp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qefgp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 1, 2)
+fov = 90.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -0.1482927, 0.9889435, 0, -0.9889435, -0.1482927, -1.4519625, 0.7619257, 0)
+material = SubResource("StandardMaterial3D_trxi4")
+
+[node name="wall1" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3502348, 0.8241571, 0)
+size = Vector3(0.5, 1, 0.5)
+material = SubResource("StandardMaterial3D_nyat4")
+
+[node name="wall2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0108248, 0, 0)
+material = SubResource("StandardMaterial3D_2c4ag")
+
+[node name="wall3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0108248, 0, 0)
+visible = false
+material = SubResource("StandardMaterial3D_5skio")
+
+[node name="wall4" type="CSGBox3D" parent="CSGCombiner3D"]
+material = SubResource("StandardMaterial3D_swjo3")
+
+[node name="door1" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
+
+[node name="door2" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
+
+[node name="door3" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
