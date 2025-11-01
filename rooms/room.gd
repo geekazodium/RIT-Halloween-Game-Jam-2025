@@ -9,9 +9,16 @@ var check_size : Vector3
 
 var faces : Array
 
+@export_category("doors")
 @export var door1_active : bool = false
 @export var door2_active : bool = false
 @export var door3_active : bool = false
+
+@export_category("textures")
+@export var floor_texture : StandardMaterial3D
+@export var wall1_texture : StandardMaterial3D
+@export var wall2_texture : StandardMaterial3D
+@export var wall3_texture : StandardMaterial3D
 
 @onready var collider_shape : CollisionShape3D = $StaticBody3D/CollisionShape3D
 @onready var combiner :CSGCombiner3D = $CSGCombiner3D
@@ -110,6 +117,16 @@ func resize():
 	faces[3].visible = true
 	collider_shape.shape = combiner.bake_collision_shape()
 	faces[3].visible = false
+	
+	if floor_texture != null:
+		floor_texture.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		faces[0].material = floor_texture
+	if wall1_texture != null:
+		faces[1].material = wall1_texture
+	if wall2_texture != null:
+		faces[2].material = wall2_texture
+	if wall3_texture != null:
+		faces[4].material = wall3_texture
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
