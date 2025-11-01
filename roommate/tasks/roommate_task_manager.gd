@@ -32,8 +32,24 @@ func _ready() -> void:
 func _add_room_to_check(room: Room) -> void:
 	self.rooms_to_check.append(room);
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if self.current_task == null:
+		return;
 	match self._state:
 		State.CheckRememberedItem:
-			self.wish_dir.target = WorldRooms.initial_item_locations.get(self.current_task.item_needed);
-			self.wish_dir.is_in_range;
+			self._nav_to_last_remembered();
+		State.SearchForItem:
+			self._search_containers_for_item();
+
+func _nav_to_last_remembered() -> void:
+	var item_key: StringName = self.current_task.item_needed;
+	var container: ItemContainer = WorldRooms.initial_item_locations.get(item_key);
+	if container == null:
+		WHATHAVEYOUDONE.WHAT_HAVE_YOU_DONE("no container found with key, scene definitely was not set up correctly");
+		return;
+	self.wish_dir.target = container;
+	if self.wish_dir.is_in_range:
+		container.item_matches(item_key);
+
+func _search_containers_for_item() -> void:
+	return;
