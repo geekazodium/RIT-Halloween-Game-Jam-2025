@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl2eoe1gawyjp"]
+
+[ext_resource type="Texture2D" uid="uid://ci4wb072vk4t4" path="res://interior/textures/Bathroom/bathtub.png" id="1_gk7l8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pmh6k"]
+size = Vector3(0.745533, 0.22930908, 0.18383789)
+
+[node name="Bathtub" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015615463, -0.05239868, -0.08850098)
+shape = SubResource("BoxShape3D_pmh6k")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
+texture = ExtResource("1_gk7l8")

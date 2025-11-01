@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1sbq1posdku6"]
+
+[ext_resource type="Texture2D" uid="uid://ce4ji4adsyasf" path="res://interior/textures/Bathroom/toilet.png" id="1_ckcud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhjhg"]
+size = Vector3(0.28979492, 0.30595398, 0.10394287)
+
+[node name="Toilet" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
+texture = ExtResource("1_ckcud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014526367, 0.0026016235, -0.056100503)
+shape = SubResource("BoxShape3D_rhjhg")
