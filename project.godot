@@ -11,19 +11,15 @@ config_version=5
 [application]
 
 config/name="RIT Halloween Game Jam 2025"
-run/main_scene="uid://c26csylq2grx0"
+run/main_scene="uid://djcbecmu36mcr"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[layer_names]
-
-3d_physics/layer_1="World"
-3d_physics/layer_2="Player"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -62,7 +58,13 @@ pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
