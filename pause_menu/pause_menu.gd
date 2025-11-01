@@ -4,8 +4,8 @@ class_name PauseMenu
 @export var pause_menu: Control
 
 func _process(_delta):
-	if Input.is_action_pressed("pause"):
-		pause_menu.visible = true;
+	if Input.is_action_just_pressed("pause"):
+		pause_menu.visible = !pause_menu.visible;
 
 func _on_resume_pressed() -> void:
 	pause_menu.visible = false;
