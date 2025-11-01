@@ -6,7 +6,7 @@ class_name RoommateWishDir
 @export var target: Node3D;
 @export var distance_tolerance: float = 5;
 
-var direction_vec: Vector2 = Vector2.ZERO;
+var direction_vec: Vector2 = Vector2.RIGHT;
 
 func _physics_process(delta: float) -> void:
 	self.nav_agent.target_position = target.global_position;
