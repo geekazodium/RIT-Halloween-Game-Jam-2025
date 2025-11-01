@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://ctogltwif2nn2" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://ceuemme6ee0kb" path="res://player/player_wish_dir.gd" id="3_g1dw6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
