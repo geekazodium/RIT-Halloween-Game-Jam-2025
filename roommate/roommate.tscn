@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=11 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
 [ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
-[ext_resource type="PackedScene" uid="uid://bqh4i7a0duqam" path="res://roommate/test_cursor.tscn" id="5_xhgch"]
+[ext_resource type="Script" uid="uid://7powfstf3a7g" path="res://roommate/tasks/roommate_task_manager.gd" id="5_xhgch"]
+[ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="6_84skn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0spho"]
 radius = 0.4
@@ -12,6 +13,15 @@ height = 1.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
 radius = 6.7559624
+
+[sub_resource type="Resource" id="Resource_f6468"]
+script = ExtResource("6_84skn")
+item_needed = &"toothbrush"
+container_key = &"sink"
+metadata/_custom_type_script = "uid://bsbux4pkc65tr"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
+size = Vector3(0.5, 1, 0.5)
 
 [node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
 collision_layer = 0
@@ -32,7 +42,7 @@ texture = ExtResource("2_a3oh8")
 
 [node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 32
 script = ExtResource("3_cw58l")
 direction_src = NodePath("..")
 metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
@@ -40,14 +50,22 @@ metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection3D"]
 shape = SubResource("SphereShape3D_ae4i6")
 
-[node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node", "target")]
+[node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node")]
 process_physics_priority = -1
 script = ExtResource("4_a3oh8")
 nav_agent = NodePath("../NavigationAgent3D")
 current_position_node = NodePath("..")
-target = NodePath("../TestCursor")
 distance_tolerance = 0.2
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
-[node name="TestCursor" parent="." instance=ExtResource("5_xhgch")]
-process_physics_priority = -3
+[node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "room_enter_detection_area")]
+script = ExtResource("5_xhgch")
+tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
+wish_dir = NodePath("../RoommateWishDir")
+room_enter_detection_area = NodePath("../CurrentRoomDetector")
+
+[node name="CurrentRoomDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CurrentRoomDetector"]
+shape = SubResource("BoxShape3D_84skn")
+debug_color = Color(0.66625464, 0.3141251, 1, 0.41960785)

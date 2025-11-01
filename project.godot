@@ -15,6 +15,10 @@ run/main_scene="uid://djcbecmu36mcr"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WorldRooms="*res://globals/world_rooms.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -62,6 +66,7 @@ pause={
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
+3d_physics/layer_6="Suspicious"
 
 [rendering]
 
