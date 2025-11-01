@@ -13,6 +13,9 @@ func _physics_process(delta: float) -> void:
 	var force: Vector3 = self.get_gravity();
 	
 	var input_direction: Vector2 = self.movement_direction.get_input_xz();
+	## fix: normalize movement directions with length > 1
+	if input_direction.length_squared() > 1:
+		input_direction = input_direction.normalized();
 	if input_direction != Vector2.ZERO:
 		self.last_nonzero_input_dir = input_direction;
 	
