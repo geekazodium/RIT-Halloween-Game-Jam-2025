@@ -14,6 +14,11 @@ config/name="RIT Halloween Game Jam 2025"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+
 [input]
 
 move_left={
