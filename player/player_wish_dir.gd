@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 		sprite.flip_h = false
 	
 	var animation = ""
+	
 	if held_item != null:
 		animation = "holding_"
 	
