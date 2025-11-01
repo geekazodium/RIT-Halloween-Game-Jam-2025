@@ -42,7 +42,7 @@ texture = ExtResource("2_a3oh8")
 
 [node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 32
 script = ExtResource("3_cw58l")
 direction_src = NodePath("..")
 metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
-tasks = Array[Object]([SubResource("Resource_f6468")])
+tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
 wish_dir = NodePath("../RoommateWishDir")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
 
