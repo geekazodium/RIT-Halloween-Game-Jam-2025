@@ -115,7 +115,7 @@ func resize():
 	else:
 		doors[2].visible = false
 		
-	area_shape.shape.size = size
+	area_shape.shape.size = size - Vector3(0.8,0.8,0.8)
 	
 	faces[3].visible = true
 	collider_shape.shape = combiner.bake_collision_shape()
@@ -130,7 +130,6 @@ func resize():
 	if wall3_texture != null:
 		faces[4].material = wall3_texture
 
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if camera != null:
 		camera.make_current()
