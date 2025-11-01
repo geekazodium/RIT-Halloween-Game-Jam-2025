@@ -26,7 +26,7 @@ albedo_texture = ExtResource("1_e3p1l")
 shading_mode = 0
 albedo_texture = ExtResource("1_e3p1l")
 
-[node name="TestRoom" type="Node3D"]
+[node name="Room" type="Node3D"]
 script = ExtResource("1_qefgp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
