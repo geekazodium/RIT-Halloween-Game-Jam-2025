@@ -181,7 +181,7 @@ height = 0.53216743
 radius = 0.17480469
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g1dw6"]
-radius = 1.472669
+radius = 0.6307555
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
 collision_layer = 2
