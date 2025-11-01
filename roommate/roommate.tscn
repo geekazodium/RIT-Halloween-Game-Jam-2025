@@ -1,18 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=8 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
 [ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
+[ext_resource type="PackedScene" uid="uid://bqh4i7a0duqam" path="res://roommate/test_cursor.tscn" id="5_xhgch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0spho"]
+radius = 0.4
+height = 1.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
 radius = 6.7559624
 
-[node name="Roommate" type="CharacterBody3D"]
+[node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
 collision_layer = 0
 script = ExtResource("1_f53c4")
+ideal_speed = 4.0
+input_force_strength = 8.0
+movement_direction = NodePath("RoommateWishDir")
 metadata/_custom_type_script = "uid://j8am2d5qhph7"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -21,20 +27,27 @@ metadata/_custom_type_script = "uid://j8am2d5qhph7"
 shape = SubResource("CapsuleShape3D_0spho")
 
 [node name="PlaceHolderShape3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.74765056, 0, 0, 0, 1.5145504, 0, 0, 0, 1.9677868, 0, 0, 0)
+transform = Transform3D(0.54442203, 0, 0, 0, 1.109691, 0, 0, 0, 1.9677868, 0, 0, 0)
 texture = ExtResource("2_a3oh8")
 
-[node name="PlayerDetector3D" type="Area3D" parent="."]
+[node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_cw58l")
+direction_src = NodePath("..")
 metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection3D"]
 shape = SubResource("SphereShape3D_ae4i6")
 
-[node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node")]
+[node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node", "target")]
+process_physics_priority = -1
 script = ExtResource("4_a3oh8")
 nav_agent = NodePath("../NavigationAgent3D")
 current_position_node = NodePath("..")
+target = NodePath("../TestCursor")
+distance_tolerance = 0.2
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
+
+[node name="TestCursor" parent="." instance=ExtResource("5_xhgch")]
+process_physics_priority = -3

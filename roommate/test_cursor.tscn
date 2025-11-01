@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqh4i7a0duqam"]
+
+[ext_resource type="Script" uid="uid://meblaum5kalh" path="res://roommate/test_cursor.gd" id="1_08l7g"]
+[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="1_pffff"]
+
+[node name="TestCursor" type="Sprite3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = ExtResource("1_pffff")
+script = ExtResource("1_08l7g")

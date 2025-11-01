@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	force += -self.velocity * self.forced_friction;
 	force.x += input_force.x;
 	force.z += input_force.y;
-	self.rotation.y = -self.last_nonzero_input_dir.angle();
+	#self.rotation.y = -self.last_nonzero_input_dir.angle();
 	self.velocity += force * delta;
 	
 	self.move_and_slide();
