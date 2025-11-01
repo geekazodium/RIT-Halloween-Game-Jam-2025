@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c26csylq2grx0"]
+[gd_scene load_steps=4 format=3 uid="uid://c26csylq2grx0"]
 
 [ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ccimog3cst7y1" path="res://rooms/kitchen.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="3_h2yge"]
 
 [node name="Node3D" type="Node3D"]
@@ -8,8 +9,7 @@
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
 
-[node name="Room" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0383489, 0, -0.23210406)
-
 [node name="Room2" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, -0.24184656)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5.13939, 0, 0.75475895)
+
+[node name="Room" parent="." instance=ExtResource("3_1bvp3")]
