@@ -13,6 +13,9 @@ var faces : Array
 @export var door1_active : bool = false
 @export var door2_active : bool = false
 @export var door3_active : bool = false
+@export var door1_offset : float = 0
+@export var door2_offset : float = 0
+@export var door3_offset : float = 0
 
 @export_category("textures")
 @export var floor_texture : Material
@@ -93,26 +96,26 @@ func resize():
 	faces[4].rotation = Vector3(0,0,0)
 	
 	if door1_active:
-		doors[0].position = Vector3(-size.x/2, (1.5-size.y)/2+0.005, 0)
+		doors[0].position = Vector3(-size.x/2, (1.5-size.y)/2+0.005, door1_offset)
 		doors[0].rotation = Vector3(0,PI/2,0)
 		doors[0].visible = true
 	else:
 		doors[0].visible = false
 	
 	if door2_active:
-		doors[1].position = Vector3(0, (1.5-size.y)/2+0.005, -size.z/2)
+		doors[1].position = Vector3(door2_offset, (1.5-size.y)/2+0.005, -size.z/2)
 		doors[1].visible = true
 	else:
 		doors[1].visible = false
 	
 	if door3_active:
-		doors[2].position = Vector3(size.x/2, (1.5-size.y)/2+0.005,0)
+		doors[2].position = Vector3(size.x/2, (1.5-size.y)/2+0.005,door3_offset)
 		doors[2].rotation = Vector3(0,PI/2,0)
 		doors[2].visible = true
 	else:
 		doors[2].visible = false
 		
-	area_shape.shape.size = size
+	area_shape.shape.size = size - Vector3(0.8,0.8,0.8)
 	
 	faces[3].visible = true
 	collider_shape.shape = combiner.bake_collision_shape()
@@ -127,7 +130,6 @@ func resize():
 	if wall3_texture != null:
 		faces[4].material = wall3_texture
 
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if camera != null:
 		camera.make_current()
