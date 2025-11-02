@@ -156,6 +156,10 @@ var search_time_left: float = 0;
 @export var search_time_seconds: float = 1;
 
 func _search_current_room(delta: float) -> void:
+	if self.character_body.held_item != null && \
+	self.character_body.held_item.key == self.current_task.item_needed:
+		self._start_task();
+		return;
 	if containers_to_search.size() == 0:
 		self._state = State.SearchForItemNextRoom;
 		return;
@@ -186,6 +190,8 @@ func _start_task() -> void:
 
 func _go_to_target_container(delta: float) -> void:
 	var target_container: ItemContainer = WorldRooms.identified_containers.get(self.current_task.container_key);
+	if target_container == null:
+		WHATHAVEYOUDONE.WHAT_HAVE_YOU_DONE("you definitely named the task container and world container different things")
 	self.wish_dir.target = target_container;
 	if self.wish_dir.is_in_range:
 		self.task_time_left -= delta;

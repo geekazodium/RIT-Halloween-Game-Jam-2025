@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=44 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
@@ -15,7 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://bkd73sjn3o8sv" path="res://roommate/Roommate Sprites/Josh_standing.png" id="12_lkxmg"]
 [ext_resource type="Texture2D" uid="uid://cbnbjs3ux6t7f" path="res://roommate/Roommate Sprites/roommate_walking_back_sheet.png" id="13_tfr46"]
 [ext_resource type="Texture2D" uid="uid://qpid7cfqmcoq" path="res://roommate/Roommate Sprites/roommate_walking_front_sheet.png" id="14_5kyui"]
+[ext_resource type="Resource" uid="uid://4dnuy06n35eh" path="res://roommate/tasks/make_lunch.tres" id="16_14he8"]
 [ext_resource type="PackedScene" uid="uid://d25hw282gg4ji" path="res://character_body/drop_shadow.tscn" id="16_fnlvw"]
+[ext_resource type="Resource" uid="uid://wm1oduq4tuxo" path="res://roommate/tasks/wash_dishes.tres" id="17_lkxmg"]
+[ext_resource type="Resource" uid="uid://chdtyenk8tgto" path="res://roommate/tasks/throw_trash.tres" id="18_lkxmg"]
+[ext_resource type="Resource" uid="uid://logorpvdy864" path="res://roommate/tasks/carve_pumpkin.tres" id="19_tfr46"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_84skn"]
 height = 1.2
@@ -280,7 +284,7 @@ metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "character_body", "current_room_detector", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
-tasks = Array[ExtResource("6_84skn")]([ExtResource("7_f6468")])
+tasks = Array[ExtResource("6_84skn")]([ExtResource("7_f6468"), ExtResource("16_14he8"), ExtResource("17_lkxmg"), ExtResource("19_tfr46"), ExtResource("18_lkxmg")])
 wish_dir = NodePath("../RoommateWishDir")
 character_body = NodePath("..")
 current_room_detector = NodePath("../CurrentRoomDetector")
