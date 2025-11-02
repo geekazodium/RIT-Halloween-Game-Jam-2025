@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://lteimira8ato"]
+[gd_scene load_steps=7 format=3 uid="uid://lteimira8ato"]
 
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="1_isfej"]
 [ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_5dwm4"]
 [ext_resource type="PackedScene" uid="uid://bpfcifw7tvbxx" path="res://roommate/roommate.tscn" id="3_5dwm4"]
 [ext_resource type="PackedScene" uid="uid://cwp08u0noxq7t" path="res://item_container/sink.tscn" id="4_meyvv"]
+[ext_resource type="PackedScene" uid="uid://ba1rijnl73c4r" path="res://items/item.tscn" id="4_xfdkg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
 vertices = PackedVector3Array(-0.4666512, -0.505, -1.2468466, -1.9666512, -0.505, -1.2468466, -1.9666512, -0.505, -0.74684656, -2.2166512, -0.505, -0.74684656, -1.9666512, -0.505, 1.0031534, 4.783349, -0.505, -1.2468466, 3.0333488, -0.505, -1.2468466, 3.0333488, -0.505, -0.74684656, 3.0333488, -0.505, 0.25315344, 2.5333488, -0.505, -0.49684656, 2.5333488, -0.505, 0.0031534433, 7.283349, -0.505, -1.2468466, 4.783349, -0.505, -1.4968466, 2.2833488, -0.505, 1.0031534, 2.2833488, -0.505, -1.2468466, -0.4666512, -0.505, -1.4968466, 3.0333488, -0.505, 0.75315344, 7.283349, -0.505, 0.75315344)
@@ -23,12 +24,16 @@ navigation_mesh = SubResource("NavigationMesh_0xm2m")
 [node name="Player" parent="." instance=ExtResource("1_isfej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
 
-[node name="Room" parent="." groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
+[node name="Room" parent="." node_paths=PackedStringArray("containers") groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0383489, 0, -0.23210406)
+containers = [NodePath("ItemContainer")]
 
 [node name="ItemContainer" parent="Room" instance=ExtResource("4_meyvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8392472, -0.7, -1.3411254)
 _key = &"sink"
+
+[node name="Item" parent="Room/ItemContainer" instance=ExtResource("4_xfdkg")]
+key = &"toothbrush"
 
 [node name="Room2" parent="." groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, -0.24184656)

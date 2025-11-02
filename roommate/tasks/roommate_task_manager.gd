@@ -45,6 +45,7 @@ func _nav_to_last_remembered() -> void:
 	var item_key: StringName = self.current_task.item_needed;
 	var container: ItemContainer = WorldRooms.initial_item_locations.get(item_key);
 	if container == null:
+		print(WorldRooms.initial_item_locations);
 		WHATHAVEYOUDONE.WHAT_HAVE_YOU_DONE("no container found with key, scene definitely was not set up correctly");
 		return;
 	self.wish_dir.target = container;
