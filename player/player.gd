@@ -19,6 +19,12 @@ var held_item: Item = null
 var looking_forward = true
 
 func _process(_delta: float) -> void:
+	if held_item:
+		if held_item.is_sus():
+			collision_layer = 2 | 32
+	else:
+		collision_layer = 2
+	
 	if Input.is_action_just_pressed("interact"):
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()

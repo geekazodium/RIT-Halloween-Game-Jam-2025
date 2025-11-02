@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoommateTask" load_steps=2 format=3 uid="uid://4dnuy06n35eh"]
+
+[ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="1_2xewo"]
+
+[resource]
+script = ExtResource("1_2xewo")
+item_needed = &"paperbag"
+container_key = &"kitchen_table"
+seconds_required = 5.0
+seconds_until_give_up = 35.0
+metadata/_custom_type_script = "uid://bsbux4pkc65tr"
