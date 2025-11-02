@@ -181,8 +181,9 @@ animations = [{
 height = 1.2
 radius = 0.25
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_g1dw6"]
-radius = 0.97572654
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8t03j"]
+height = 0.5680237
+radius = 0.69873047
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "wishDir", "area", "movement_direction")]
 collision_layer = 2
@@ -208,11 +209,13 @@ script = ExtResource("3_g1dw6")
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="InteractionRange" type="Area3D" parent="."]
-collision_layer = 4
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionRange"]
-shape = SubResource("SphereShape3D_g1dw6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103134155, 0)
+shape = SubResource("CylinderShape3D_8t03j")
 debug_color = Color(0.99638575, 0, 0.19645768, 0.41960785)
 
-[connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
-[connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]
+[connection signal="area_entered" from="InteractionRange" to="." method="_on_interaction_range_area_entered"]
+[connection signal="area_exited" from="InteractionRange" to="." method="_on_interaction_range_area_exited"]
