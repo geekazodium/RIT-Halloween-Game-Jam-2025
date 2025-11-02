@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccimog3cst7y1"]
+[gd_scene load_steps=18 format=3 uid="uid://ccimog3cst7y1"]
 
 [ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://rooms/room.tscn" id="1_e6d45"]
 [ext_resource type="Texture2D" uid="uid://bjqttw8guigu6" path="res://interior/textures/kitchen_floor.png" id="2_xpxbc"]
@@ -36,6 +36,10 @@ data = PackedVector3Array(-2.5, -1.005, -2.5, -2.495, -1.0000001, -2.5, -2.5, -1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53nl4"]
 size = Vector3(4.2, 1.2, 4.2)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_li4i8"]
+width = 10
+height = 10
 
 [node name="Room" instance=ExtResource("1_e6d45")]
 size = Vector3(5, 2, 5)
@@ -126,6 +130,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.4
 [node name="Item" parent="counter2" index="3" instance=ExtResource("10_x6u10")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 key = &"toothbrush"
+
+[node name="Sprite3D2" type="Sprite3D" parent="counter2/Item" index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.1, 0)
+texture = SubResource("NoiseTexture2D_li4i8")
 
 [node name="counter" parent="." index="11" instance=ExtResource("10_53nl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.773, -0.69940054, -0.9)

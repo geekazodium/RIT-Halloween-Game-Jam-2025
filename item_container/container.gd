@@ -53,3 +53,13 @@ func take_item() -> Item:
 	var taken: Item = self.item;
 	self.item = null;
 	return taken;
+
+## nullable in/out
+func swap_item(new_item: Item) -> Item:
+	if self.item == null:
+		self.item = new_item;
+		return null;
+	var tmp: Item = self.item;
+	self.item = null;
+	self.item = new_item;
+	return tmp;

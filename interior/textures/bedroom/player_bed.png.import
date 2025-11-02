@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d03dmcpay1mrj"
-path.s3tc="res://.godot/imported/player_bed.png-e5c7d0b5d4517da742591e663d6ceeab.s3tc.ctex"
+path="res://.godot/imported/player_bed.png-e5c7d0b5d4517da742591e663d6ceeab.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/bedroom/player_bed.png"
-dest_files=["res://.godot/imported/player_bed.png-e5c7d0b5d4517da742591e663d6ceeab.s3tc.ctex"]
+dest_files=["res://.godot/imported/player_bed.png-e5c7d0b5d4517da742591e663d6ceeab.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

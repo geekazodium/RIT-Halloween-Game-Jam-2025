@@ -61,7 +61,7 @@ func _add_room_to_check(room: Room) -> void:
 
 func _physics_process(delta: float) -> void:
 	if self.current_task == null:
-		print("roommate is leaving");
+		self.wish_dir.target = RoommateGlobalRef.exit_target;
 		return;
 	match self._state:
 		State.CheckRememberedItem:
@@ -89,7 +89,7 @@ func _nav_to_last_remembered(delta: float) -> void:
 			return;
 		var matches: bool = container.item_matches(item_key);
 		if matches:
-			self.character_body.held_item = container.take_item();
+			self.character_body.swap_item_with_container(container);
 			self._start_task();
 		else:
 			self._init_room_search_order();
@@ -178,12 +178,14 @@ func _start_task() -> void:
 	self.task_time_left = self.current_task.seconds_required;
 
 func _go_to_target_container(delta: float) -> void:
-	self.wish_dir.target = WorldRooms.identified_containers.get(self.current_task.container_key);
+	var target_container: ItemContainer = WorldRooms.identified_containers.get(self.current_task.container_key);
+	self.wish_dir.target = target_container;
 	if self.wish_dir.is_in_range:
 		self.task_time_left -= delta;
 		if self.task_time_left <= 0:
 			self.current_task.status = RoommateTask.TaskStatus.COMPLETE;
 			self.task_status_updated.emit(self.current_task_index, self.current_task.status);
 			self.current_task_index += 1;
+			self.character_body.swap_item_with_container(target_container);
 			self._init_next_task();
 			print("task done!");

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 WorldRooms="*res://globals/world_rooms.gd"
+RoommateGlobalRef="*res://globals/roommate_global_ref.gd"
 
 [display]
 
@@ -66,6 +67,7 @@ pause={
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
+3d_physics/layer_5="Roommate"
 3d_physics/layer_6="Suspicious"
 3d_physics/layer_7="RoomBoundingBoxes"
 
