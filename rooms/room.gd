@@ -2,7 +2,7 @@
 extends Node3D
 class_name Room
 
-@export var containers : Array[ItemContainer];
+var containers : Array[ItemContainer];
 
 @export var size : Vector3 = Vector3(2,2,2)
 
@@ -26,6 +26,11 @@ var faces : Array
 @export var wall3_texture : Material
 @export var ceiling_texture : Material
 
+var bounding_box: Area3D:
+	get:
+		## refactor later
+		return $Area3D;
+
 @onready var collider_shape : CollisionShape3D = $StaticBody3D/CollisionShape3D
 @onready var combiner :CSGCombiner3D = $CSGCombiner3D
 var camera : Camera3D
@@ -35,10 +40,13 @@ var area_shape : CollisionShape3D
 var doors : Array
 
 func _exit_tree() -> void:
-	if Engine.is_editor_hint():
+	if !Engine.is_editor_hint():
 		WorldRooms.room_exit_tree(self);
 
 func _ready() -> void:
+	var found_containers: Array = self.find_children("*", "ItemContainer", false);
+	self.containers.clear();
+	self.containers.append_array(found_containers);
 	if !Engine.is_editor_hint():
 		WorldRooms.room_enter_tree(self);
    

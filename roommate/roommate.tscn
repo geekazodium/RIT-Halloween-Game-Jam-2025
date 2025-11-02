@@ -26,6 +26,8 @@ radius = 6.7559624
 script = ExtResource("6_84skn")
 item_needed = &"toothbrush"
 container_key = &"sink"
+seconds_required = 5.0
+seconds_until_give_up = 20.0
 metadata/_custom_type_script = "uid://bsbux4pkc65tr"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
@@ -230,16 +232,20 @@ process_physics_priority = -1
 script = ExtResource("4_a3oh8")
 nav_agent = NodePath("../NavigationAgent3D")
 current_position_node = NodePath("..")
-distance_tolerance = 0.2
+distance_tolerance = 0.5
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
-[node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "room_enter_detection_area")]
+[node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "character_body", "current_room_detector", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
 tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
 wish_dir = NodePath("../RoommateWishDir")
+character_body = NodePath("..")
+current_room_detector = NodePath("../CurrentRoomDetector")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
 
 [node name="CurrentRoomDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CurrentRoomDetector"]
 shape = SubResource("BoxShape3D_84skn")
