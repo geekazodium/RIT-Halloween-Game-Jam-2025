@@ -55,8 +55,6 @@ func _physics_process(delta: float) -> void:
 	if self.suspicion > MAX_SUS:
 		get_tree().change_scene_to_file("res://menu/menu.tscn") #change to lose screen "You've been caught!"
 
-const SUSPICIOUS_LAYER: int = 6;
-
 func _check_line_of_sight(body: PhysicsBody3D) -> bool:
 	if self.is_colliding_with_suspicious_body(body.global_position - Vector3.UP * .3):
 		return true;
