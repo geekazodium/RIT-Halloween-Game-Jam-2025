@@ -69,6 +69,8 @@ func _ready() -> void:
 	doors[2].operation = 2
 	area_shape = $Area3D/CollisionShape3D
 	area_shape.shape = BoxShape3D.new()
+	if not Engine.is_editor_hint():
+		faces[5].visible = true
 	resize()
 
 	for child in get_children():

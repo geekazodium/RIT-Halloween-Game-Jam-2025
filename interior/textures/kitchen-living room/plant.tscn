@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh7oup0xcyskj"]
+
+[ext_resource type="Texture2D" uid="uid://djgliapiy147p" path="res://interior/textures/kitchen-living room/plant.png" id="1_ioymd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qpnb"]
+size = Vector3(0.5, 0.7, 0.2)
+
+[node name="Plant" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0qpnb")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_ioymd")
