@@ -10,7 +10,6 @@ var current_task: RoommateTask:
 		return tasks[self.current_task_index];
 
 @export var wish_dir: RoommateWishDir;
-
 @export var character_body: RoommateCharacterBody;
 @export var current_room_detector: Area3D;
 
@@ -135,7 +134,6 @@ func _check_interrupt_traversal_with_this_room() -> void:
 		if index != -1:
 			self._init_room_search(self.rooms_to_check[index]);
 			self.rooms_to_check.remove_at(index);
-	
 
 func _init_room_search(room: Room):
 	print("initializing room search for room ", room);
@@ -204,6 +202,8 @@ func _go_to_target_container(delta: float) -> void:
 			self.current_task_index += 1;
 			self.character_body.swap_item_with_container(target_container);
 			self._init_next_task();
+			if tasks.size() == 0:
+				get_tree().change_scene_to_file("res://win-lose-screens/lose_screen.tscn")
 			print("task done!");
 
 

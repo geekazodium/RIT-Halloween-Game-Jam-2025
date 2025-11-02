@@ -15,7 +15,7 @@ func _ready() -> void:
 func on_game_end(seconds_late: float) -> void:
 	var tree: SceneTree = self.get_tree();
 	tree.set_block_signals(true);
-	tree.change_scene_to_file("res://menu/menu.tscn");
+	tree.change_scene_to_file("res://win-lose-screens/win_screen.tscn");
 	tree.set_block_signals(false);
 
 func _physics_process(delta: float) -> void:

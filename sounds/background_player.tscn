@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxut62n0t4pkb"]
+
+[ext_resource type="AudioStream" uid="uid://dk4lqo43ul8rc" path="res://sounds/shake-it-up-397500.mp3" id="1_6flup"]
+[ext_resource type="Script" uid="uid://b8gkhevf8ese5" path="res://sounds/audio_stream_player.gd" id="2_ljvft"]
+
+[node name="BackgroundPlayer" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_6flup")
+volume_db = -10.0
+parameters/looping = true
+script = ExtResource("2_ljvft")
