@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://djcbecmu36mcr"]
+[gd_scene load_steps=11 format=3 uid="uid://djcbecmu36mcr"]
 
 [ext_resource type="Script" uid="uid://3vp57lu4e4ll" path="res://menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://b4b4e0x4sa02m" path="res://menu/textures/Title.png" id="2_g18jx"]
 [ext_resource type="Texture2D" uid="uid://vb8dfsklqpp0" path="res://menu/textures/title screen.png" id="2_svuvw"]
 [ext_resource type="Texture2D" uid="uid://t544e0j03sa2" path="res://menu/textures/play_buttton.png" id="4_svuvw"]
 [ext_resource type="Texture2D" uid="uid://b3d85wldmym4t" path="res://menu/textures/exit_buttton.png" id="5_juveg"]
+[ext_resource type="AudioStream" uid="uid://b2fjcxpwirarl" path="res://sounds/button_click.wav" id="6_juveg"]
+[ext_resource type="PackedScene" uid="uid://cxut62n0t4pkb" path="res://sounds/background_player.tscn" id="7_v6yed"]
 
 [sub_resource type="Theme" id="Theme_ouk20"]
 
@@ -21,6 +23,9 @@ script = ExtResource("1_lti8b")
 options_menu = NodePath("OptionsMenu")
 main_menu = NodePath("MainMenu")
 title = NodePath("MainMenu/Title")
+
+[node name="BackgroundPlayer" parent="." instance=ExtResource("7_v6yed")]
+layout_mode = 1
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -118,6 +123,9 @@ value = 100.0
 [node name="Back" type="Button" parent="OptionsMenu/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_juveg")
 
 [connection signal="pressed" from="MainMenu/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/Options" to="." method="_on_options_pressed"]

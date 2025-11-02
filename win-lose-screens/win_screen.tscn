@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c67qrq142gjnr"]
+[gd_scene load_steps=4 format=3 uid="uid://c67qrq142gjnr"]
 
 [ext_resource type="Script" uid="uid://b2sysfluxo45g" path="res://win-lose-screens/lose_screen.gd" id="1_rmbqy"]
 [ext_resource type="Texture2D" uid="uid://bv3qivyq8vdc4" path="res://win-lose-screens/win screen.png" id="2_luevi"]
+[ext_resource type="AudioStream" uid="uid://b6ga4wophkcqv" path="res://sounds/win_sound.mp3" id="3_8md3b"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -20,6 +21,7 @@ texture = ExtResource("2_luevi")
 
 [node name="Timer" type="Timer" parent="."]
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 9.0
@@ -27,5 +29,10 @@ offset_top = 693.0
 offset_right = 231.0
 offset_bottom = 716.0
 text = "Press space bar to continue.."
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8md3b")
+autoplay = true
+>>>>>>> f9b11faa54b51f574c5ac84759b5bb3e22b199c7
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ba34bht1jbbe"]
 
-[ext_resource type="Script" uid="uid://ckukrgykl8uua" path="res://pause_menu/pause_menu.gd" id="1_1xdim"]
+[ext_resource type="Script" uid="uid://bylpi561goihr" path="res://pause_menu/tutorial_note.gd" id="1_1xdim"]
 [ext_resource type="Texture2D" uid="uid://bjqttw8guigu6" path="res://interior/textures/kitchen_floor.png" id="2_1xdim"]
 [ext_resource type="Texture2D" uid="uid://1vxdg1u77k7l" path="res://pause_menu/tutorial_note.png" id="2_ocbyn"]
 [ext_resource type="AudioStream" uid="uid://ddnoe1jg88rjs" path="res://sounds/menue_interact.wav" id="4_ofpva"]
