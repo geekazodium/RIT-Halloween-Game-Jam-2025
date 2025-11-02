@@ -58,3 +58,6 @@ func _physics_process(delta: float) -> void:
 		animation += "back"
 	
 	sprite.play(animation);
+
+func swap_item_with_container(container: ItemContainer) -> void:
+	self.held_item = container.swap_item(self.held_item);

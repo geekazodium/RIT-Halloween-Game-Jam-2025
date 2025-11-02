@@ -19,7 +19,7 @@ var item: Item = null:
 			return;
 		if item != null:
 			for c in self.item_holder.get_children():
-				c.queue_free();
+				self.item_holder.remove_child(c);
 		else:
 			self.move_to_item_holder.call_deferred(value);
 		item = value;
@@ -50,3 +50,13 @@ func take_item() -> Item:
 	var taken: Item = self.item;
 	self.item = null;
 	return taken;
+
+## nullable in/out
+func swap_item(new_item: Item) -> Item:
+	if self.item == null:
+		self.item = new_item;
+		return null;
+	var tmp: Item = self.item;
+	self.item = null;
+	self.item = new_item;
+	return tmp;
