@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bluyjdwt83jur"]
+[gd_scene load_steps=34 format=3 uid="uid://bluyjdwt83jur"]
 
 [ext_resource type="Script" uid="uid://ctogltwif2nn2" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dc5yogkk65get" path="res://player/Player Sprites/player_standing_holding_back.png" id="2_rgyib"]
@@ -188,6 +188,15 @@ radius = 0.25
 height = 0.5680237
 radius = 0.69873047
 
+[sub_resource type="Gradient" id="Gradient_ebec5"]
+colors = PackedColorArray(0, 0, 0, 0.4392157, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yllr7"]
+gradient = SubResource("Gradient_ebec5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "wishDir", "movement_direction")]
 collision_layer = 2
 collision_mask = 5
@@ -224,6 +233,55 @@ debug_color = Color(0.99638575, 0, 0.19645768, 0.41960785)
 [node name="interacting" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_2ieo8")
 volume_db = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_yllr7")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.5
+offset_top = 3.75
+offset_right = 385.5
+offset_bottom = 100.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -91.5
+offset_right = 130.5
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "INTERACTING"
 
 [connection signal="area_entered" from="InteractionRange" to="." method="_on_interaction_range_area_entered"]
 [connection signal="area_exited" from="InteractionRange" to="." method="_on_interaction_range_area_exited"]

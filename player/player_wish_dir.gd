@@ -8,4 +8,6 @@ func _process(_delta):
 
 
 func get_input_xz() -> Vector2:
+	if (self.get_parent() as Player).interacting:
+		return Vector2.ZERO;
 	return self.direction_vec;
