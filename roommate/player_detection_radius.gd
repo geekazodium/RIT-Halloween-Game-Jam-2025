@@ -38,7 +38,6 @@ func _physics_process(delta: float) -> void:
 		var player_coll: Player = body as Player;
 		if player_coll != null: 
 			self.suspicious_player_detected.emit(player_coll);
-		print("sus");
 		suspicious = true;
 	if !suspicious:
 		self.suspicion = max(self.suspicion - self.suspicion_decay_per_second * delta,0);
