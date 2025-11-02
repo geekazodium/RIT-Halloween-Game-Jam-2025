@@ -5,6 +5,7 @@
 
 [node name="Paperbag" instance=ExtResource("1_fc7h3")]
 key = &"paperbag"
+suspicious_val = 1
 
 [node name="Sprite3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
