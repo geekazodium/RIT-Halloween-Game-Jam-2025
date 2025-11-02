@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://h577waryfqee"]
 
 [ext_resource type="Script" uid="uid://dybts4oglrh5y" path="res://item_container/container.gd" id="1_7us4m"]
-[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_7us4m"]
+[ext_resource type="Texture2D" uid="uid://b1swilpj3xmgy" path="res://item_container/empty.png" id="2_m8hp2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7us4m"]
 radius = 0.35742188
@@ -20,6 +20,7 @@ collision_mask = 2
 shape = SubResource("CylinderShape3D_7us4m")
 debug_color = Color(0.27187896, 0.6328456, 0, 0.41960785)
 
-[node name="ItemSprite" type="Sprite3D" parent="."]
+[node name="EmptyBox" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71855175, 0)
 visible = false
-texture = ExtResource("2_7us4m")
+texture = ExtResource("2_m8hp2")
