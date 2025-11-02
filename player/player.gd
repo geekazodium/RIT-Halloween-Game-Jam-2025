@@ -43,7 +43,9 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/Control/ProgressBar.value = self.interaction_timer.time_left;
 	
 	if Input.is_action_just_pressed("interact") && !self.interacting:
-		for area in $InteractionRange.get_overlapping_areas():
+		var areas:Array[Area3D] = $InteractionRange.get_overlapping_areas();
+		if areas.size() >0:
+			var area:Area3D = areas[0];
 			var node = area.get_parent()
 			if node is ItemContainer:
 				interact_sound_player.play(randf_range(5.0,30.0))
@@ -66,7 +68,6 @@ func _process(_delta: float) -> void:
 						node.item = held_item
 						held_item = null
 						if node.item: print("Container now has: ", node.item.key)
-				break;
 	if Input.is_action_just_released("interact"):
 		self.interacting = false;
 		self.interaction_timer = null;
