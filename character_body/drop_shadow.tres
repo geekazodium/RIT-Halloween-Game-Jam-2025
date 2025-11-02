@@ -1,0 +1,14 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=3 uid="uid://41qhq7a2mbmm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujk3v"]
+transparency = 4
+depth_draw_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0, 0, 0, 0.1882353)
+
+[resource]
+material = SubResource("StandardMaterial3D_ujk3v")
+height = 0.1
+radial_segments = 12
+rings = 0

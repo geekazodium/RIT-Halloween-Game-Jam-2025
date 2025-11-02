@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d25hw282gg4ji"]
+
+[ext_resource type="CylinderMesh" uid="uid://41qhq7a2mbmm" path="res://character_body/drop_shadow.tres" id="1_c0qbq"]
+
+[node name="DropShadow" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.496, 0)
+mesh = ExtResource("1_c0qbq")

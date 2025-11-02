@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bluyjdwt83jur"]
+[gd_scene load_steps=30 format=3 uid="uid://bluyjdwt83jur"]
 
 [ext_resource type="Script" uid="uid://ctogltwif2nn2" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dc5yogkk65get" path="res://player/Player Sprites/player_standing_holding_back.png" id="2_rgyib"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3c7j5o5u8hv" path="res://player/Player Sprites/player_walking_front_holding_sheet.png" id="5_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://bsagh54echnen" path="res://player/Player Sprites/player_walking_back_sheet.png" id="5_rgyib"]
 [ext_resource type="Texture2D" uid="uid://baqynar6ci3cr" path="res://player/Player Sprites/player_walking_front.png" id="6_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://d25hw282gg4ji" path="res://character_body/drop_shadow.tscn" id="10_8t03j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
 atlas = ExtResource("3_rgyib")
@@ -206,6 +207,8 @@ shape = SubResource("CylinderShape3D_hg6s5")
 [node name="PlayerWishDir" type="Node" parent="."]
 script = ExtResource("3_g1dw6")
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
+
+[node name="DropShadow" parent="." instance=ExtResource("10_8t03j")]
 
 [node name="InteractionRange" type="Area3D" parent="."]
 collision_layer = 4
