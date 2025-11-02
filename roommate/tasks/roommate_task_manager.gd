@@ -24,7 +24,7 @@ var target_room: Room:
 		return rooms_to_check[0];
 
 var current_room_to_check: Room = null;
-
+var give_up_time_left: float;
 
 var _state: State;
 
@@ -35,8 +35,13 @@ enum State{
 	GoToTargetContainer
 }
 
-func _ready() -> void:
+func _init_next_task() -> void:
 	self._state = State.CheckRememberedItem;
+	if self.current_task != null:
+		self.give_up_time_left = self.current_task.seconds_until_give_up;
+
+func _ready() -> void:
+	self._init_next_task();
 	WorldRooms.room_entering_tree.connect(self._add_room_to_check);
 
 func _add_room_to_check(room: Room) -> void:
@@ -44,14 +49,19 @@ func _add_room_to_check(room: Room) -> void:
 
 func _physics_process(delta: float) -> void:
 	if self.current_task == null:
+		print("roommate is leaving");
 		return;
 	match self._state:
 		State.CheckRememberedItem:
 			self._nav_to_last_remembered();
 		State.SearchForItemSearchRoom:
+			self.give_up_time_left -= delta;
 			self._search_current_room(delta);
 		State.SearchForItemNextRoom:
+			self.give_up_time_left -= delta;
 			self._move_to_next_room();
+		State.GoToTargetContainer:
+			self._go_to_target_container(delta);
 
 func _nav_to_last_remembered() -> void:
 	var item_key: StringName = self.current_task.item_needed;
@@ -64,8 +74,8 @@ func _nav_to_last_remembered() -> void:
 	if self.wish_dir.is_in_range:
 		var matches: bool = container.item_matches(item_key);
 		if matches:
-			self._state = State.GoToTargetContainer;
 			self.character_body.held_item = container.take_item();
+			self._start_task();
 		else:
 			self._init_room_search_order();
 			self._state = State.SearchForItemSearchRoom;
@@ -82,7 +92,17 @@ func _init_room_search_order() -> void:
 			return a_distance > b_distance;
 	);
 
+func check_give_up() -> bool:
+	if self.give_up_time_left < 0:
+		print("gave up");
+		self.tasks.pop_front();
+		self._init_next_task();
+		return true;
+	return false;
+
 func _move_to_next_room() -> void:
+	if self.check_give_up():
+		return;
 	self.wish_dir.target = self.target_room.bounding_box;
 	for area in self.current_room_detector.get_overlapping_areas():
 		var room = area.get_parent() as Room;
@@ -124,10 +144,27 @@ func _search_current_room(delta: float) -> void:
 		if target.item == null || self.current_task.item_needed != target.item.key:
 			print("failed to find");
 			containers_to_search.pop_front();
+			if self.check_give_up():
+				return;
 		else:
 			target.take_item();
-			self._state = State.GoToTargetContainer;
+			self._start_task();
 		self.search_time_left = self.search_time_seconds;
 #func _search_containers_for_item() -> void:
 	#self.wish_dir.target = 
 	#pass
+
+var task_time_left: float = 0;
+
+func _start_task() -> void:
+	self._state = State.GoToTargetContainer;
+	self.task_time_left = self.current_task.seconds_required;
+
+func _go_to_target_container(delta: float) -> void:
+	self.wish_dir.target = WorldRooms.identified_containers.get(self.current_task.container_key);
+	if self.wish_dir.is_in_range:
+		self.task_time_left -= delta;
+		if self.task_time_left <= 0:
+			self.tasks.pop_front();
+			self._init_next_task();
+			print("task done!");
