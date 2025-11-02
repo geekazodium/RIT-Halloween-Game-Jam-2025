@@ -10,11 +10,15 @@ var checked = load("res://pause_menu/textures/checked.png")
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.visible = !pause_menu.visible;
+		get_tree().paused = pause_menu.visible
+	
 
 func _on_resume_pressed() -> void:
 	pause_menu.visible = false;
+	get_tree().paused = false;
 
 func _on_quit_pressed() -> void:
+	get_tree().paused = false;
 	get_tree().change_scene_to_file("res://menu/menu.tscn");
 
 func _on_resume_mouse_entered() -> void:
