@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djgliapiy147p"
-path.s3tc="res://.godot/imported/plant.png-a16ddf523042132428453752487d854d.s3tc.ctex"
+path="res://.godot/imported/plant.png-a16ddf523042132428453752487d854d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/kitchen-living room/plant.png"
-dest_files=["res://.godot/imported/plant.png-a16ddf523042132428453752487d854d.s3tc.ctex"]
+dest_files=["res://.godot/imported/plant.png-a16ddf523042132428453752487d854d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

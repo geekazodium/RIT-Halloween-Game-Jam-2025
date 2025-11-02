@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crfqat6tb4dpa"
-path.s3tc="res://.godot/imported/trash.png-c85d0f134e666f9392e56afaf4457d9d.s3tc.ctex"
+path="res://.godot/imported/trash.png-c85d0f134e666f9392e56afaf4457d9d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://items/textures/trash.png"
-dest_files=["res://.godot/imported/trash.png-c85d0f134e666f9392e56afaf4457d9d.s3tc.ctex"]
+dest_files=["res://.godot/imported/trash.png-c85d0f134e666f9392e56afaf4457d9d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

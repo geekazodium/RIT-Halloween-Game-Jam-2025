@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blc4ylf1wj1jb"
-path.s3tc="res://.godot/imported/exclaimation_mark.png-a8dfb011c9653ca516062257f4593dd6.s3tc.ctex"
+path="res://.godot/imported/exclaimation_mark.png-a8dfb011c9653ca516062257f4593dd6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://roommate/sus/exclaimation_mark.png"
-dest_files=["res://.godot/imported/exclaimation_mark.png-a8dfb011c9653ca516062257f4593dd6.s3tc.ctex"]
+dest_files=["res://.godot/imported/exclaimation_mark.png-a8dfb011c9653ca516062257f4593dd6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

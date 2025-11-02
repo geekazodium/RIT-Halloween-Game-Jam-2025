@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://codkvoyjw61nt"
-path.s3tc="res://.godot/imported/paperbag.png-cc51b2d800f464baa427a462fe04eef9.s3tc.ctex"
+path="res://.godot/imported/paperbag.png-cc51b2d800f464baa427a462fe04eef9.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://items/textures/paperbag.png"
-dest_files=["res://.godot/imported/paperbag.png-cc51b2d800f464baa427a462fe04eef9.s3tc.ctex"]
+dest_files=["res://.godot/imported/paperbag.png-cc51b2d800f464baa427a462fe04eef9.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

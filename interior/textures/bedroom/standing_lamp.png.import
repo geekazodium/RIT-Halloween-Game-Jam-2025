@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkkgr7v0208bf"
-path.s3tc="res://.godot/imported/standing_lamp.png-78232c55d2861120a5819e44923623e7.s3tc.ctex"
+path="res://.godot/imported/standing_lamp.png-78232c55d2861120a5819e44923623e7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/bedroom/standing_lamp.png"
-dest_files=["res://.godot/imported/standing_lamp.png-78232c55d2861120a5819e44923623e7.s3tc.ctex"]
+dest_files=["res://.godot/imported/standing_lamp.png-78232c55d2861120a5819e44923623e7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
