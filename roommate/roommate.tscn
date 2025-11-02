@@ -261,7 +261,7 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDetection3D"]
-transform = Transform3D(8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, -0.6, 0)
+transform = Transform3D(8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, -0.55334723, 0)
 mesh = SubResource("CylinderMesh_f6468")
 surface_material_override/0 = SubResource("ShaderMaterial_yhfs1")
 
@@ -282,7 +282,6 @@ current_room_detector = NodePath("../CurrentRoomDetector")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
 
 [node name="CurrentRoomDetector" type="Area3D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 64
 
