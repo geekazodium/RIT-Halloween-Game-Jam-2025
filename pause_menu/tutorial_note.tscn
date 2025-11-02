@@ -34,3 +34,11 @@ stretch_mode = 2
 
 [node name="menu_interact" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ofpva")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 693.0
+offset_right = 230.0
+offset_bottom = 716.0
+text = "Press space bar to continue.."
