@@ -28,6 +28,12 @@ var item_holder: Node3D:
 	get: 
 		return $ItemHolder;
 
+func show_item():
+	$ItemSprite.visible = true;
+
+func hide_item():
+	$ItemSprite.visible = false;
+
 func move_to_item_holder(v: Item) -> void:
 	if v.is_inside_tree():
 		v.get_parent().remove_child(v);
