@@ -3,7 +3,6 @@ extends Control
 @export var roommate_node_path: NodePath
 @export var player_node_path: NodePath
 @export var vertical_container: VBoxContainer
-@export var raycast: RayCast3D
 
 @onready var task_display_scene = preload("res://to-do_list/task_display.tscn")
 @onready var player = get_node(player_node_path);
