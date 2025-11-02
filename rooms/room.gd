@@ -33,7 +33,7 @@ var area_shape : CollisionShape3D
 var doors : Array
 
 func _exit_tree() -> void:
-	if Engine.is_editor_hint():
+	if !Engine.is_editor_hint():
 		WorldRooms.room_exit_tree(self);
 
 func _ready() -> void:
