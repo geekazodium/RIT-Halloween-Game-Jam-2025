@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc13611vq2fpd"]
+
+[ext_resource type="Texture2D" uid="uid://t34xghisqwrv" path="res://interior/textures/bedroom/roommate_bed.png" id="1_iafy8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_honyl"]
+size = Vector3(2, 1, 1)
+
+[node name="RoommateBed" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.21591884, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_iafy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_honyl")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://db2t55mypxe77"]
+
+[ext_resource type="Texture2D" uid="uid://bq328y1tke8uc" path="res://interior/textures/bedroom/square_rug.png" id="1_y02bl"]
+
+[node name="SquareRug" type="Sprite3D"]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0)
+sorting_offset = -1.0
+texture = ExtResource("1_y02bl")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c26csylq2grx0"]
+[gd_scene load_steps=9 format=3 uid="uid://c26csylq2grx0"]
 
 [ext_resource type="PackedScene" uid="uid://ccimog3cst7y1" path="res://rooms/kitchen.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c7oe8ktwaj2p4" path="res://rooms/bathroom.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://da10gr145ncj1" path="res://rooms/player_bedroom.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bl000km5fuki8" path="res://rooms/rommate_bedroom.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dvkfb6p8rrrwb" path="res://pause_menu/pause_menu.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://ccv6xiqlqct33" path="res://to-do_list/to_do_list.tscn" id="7_272bh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
 vertices = PackedVector3Array(-2.005, -0.50842476, -0.5050001, -1.7550001, -0.50842476, -0.5050001, -1.5050001, -0.50842476, -0.7550001, -2.005, -0.50842476, -2.005, -1.5050001, -0.50842476, 0.24499989, -2.255, -0.50842476, -0.5050001, -2.005, -0.50842476, 1.9949999, 2.245, -0.50842476, -0.5050001, -0.0050001144, -0.50842476, -0.7550001, 0.24499989, -0.50842476, -0.0050001144, -0.5050001, -0.50842476, -2.005, 2.995, -0.50842476, 0.4949999, 5.245, -0.50842476, -0.2550001, 2.495, -0.50842476, -0.2550001, 2.495, -0.50842476, 0.24499989, -0.5050001, -0.50842476, -2.255, 2.245, -0.50842476, -2.005, 2.245, -0.50842476, 0.4949999, -0.0050001144, -0.50842476, 0.24499989, 7.245, -0.50842476, -0.2550001, 5.245, -0.50842476, -0.5050001, 7.245, -0.50842476, 1.9949999, 7.495, -0.50842476, 1.7449999, 2.995, -0.50842476, 1.9949999, 2.245, -0.50842476, 1.9949999)
@@ -26,7 +28,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
 collision_mask = 1
 
 [node name="Room" parent="." instance=ExtResource("3_1bvp3")]
-reload = false
 
 [node name="Room2" parent="." instance=ExtResource("3_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.501, 0, -1)
@@ -35,4 +36,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.501, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.501, 0, 0)
 
 [node name="Room4" parent="." instance=ExtResource("5_lquwl")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.8, 0, -4.501)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, 0, -4.501)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="To-DoList" parent="." instance=ExtResource("7_272bh")]
+offset_left = 962.0
+offset_top = 334.0
+offset_right = -173.05371
+offset_bottom = -201.914
+player_node_path = NodePath("../Player")
