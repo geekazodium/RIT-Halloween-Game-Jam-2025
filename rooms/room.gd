@@ -5,7 +5,9 @@ class_name Room
 @export var containers : Array[ItemContainer];
 
 @export var size : Vector3 = Vector3(2,2,2)
-var check_size : Vector3
+
+@export var reload : bool = false
+var reload_check : bool = reload
 
 var faces : Array
 
@@ -69,8 +71,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
-		if size != check_size:
-			check_size = size
+		if reload != reload_check:
+			reload_check = reload
 			resize()
 
 func resize():
@@ -137,3 +139,4 @@ func resize():
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if camera != null:
 		camera.make_current()
+		_body.global_rotation = camera.global_rotation
