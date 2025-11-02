@@ -158,7 +158,7 @@ func _on_area_3d_body_exited(_body: Node3D) -> void:
 		## indication of spaghetti code: why do I need to call this here?
 		## what is the while loop for???? I can't exit this scene without
 		## adding this line...
-		if RoommateGlobalRef.has_all_roommates_exited:
+		if RoommateGlobalRef.has_all_roommates_exited || self.get_tree().paused:
 			break;
 		if self.is_inside_tree():
 			await get_tree().process_frame
