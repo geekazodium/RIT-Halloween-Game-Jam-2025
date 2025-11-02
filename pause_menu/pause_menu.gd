@@ -2,6 +2,7 @@ extends Control
 class_name PauseMenu
 
 @onready var menu_interact_sound_player : AudioStreamPlayer = $menu_interact
+@onready var button_click_sound_player : AudioStreamPlayer = $button_sound
 
 @export var pause_menu: Control
 @export var resume_image: TextureRect
@@ -16,10 +17,13 @@ func _process(_delta):
 	
 
 func _on_resume_pressed() -> void:
+	button_click_sound_player.play()
 	pause_menu.visible = false;
 	get_tree().paused = false;
 
 func _on_quit_pressed() -> void:
+	button_click_sound_player.play()
+	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = false;
 	get_tree().change_scene_to_file("res://menu/menu.tscn");
 

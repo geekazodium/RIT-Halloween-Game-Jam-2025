@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dvkfb6p8rrrwb" path="res://pause_menu/pause_menu.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v1tew1dknbww" path="res://items/item_scenes/paperbag.tscn" id="6_w48qg"]
 [ext_resource type="PackedScene" uid="uid://ccv6xiqlqct33" path="res://to-do_list/to_do_list.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" path="res://roommate/roommate_exit_area.tscn" id="7_kek77"]
+[ext_resource type="PackedScene" uid="uid://cxut62n0t4pkb" path="res://sounds/background_player.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dk5h33v7a3rtj" path="res://roommate/roommate_exit_area.tscn" id="7_kek77"]
 [ext_resource type="PackedScene" uid="uid://dv3rp756nvad8" path="res://items/item_scenes/pumpkin.tscn" id="9_dg77c"]
 
@@ -53,6 +55,8 @@ data = PackedVector3Array(-2, -1.005, -1.9999999, -1.995, -1.0000001, -1.9999999
 size = Vector3(3.2, 1.2, 3.2)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="BackgroundPlayer" parent="." instance=ExtResource("10_4c57u")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_0xm2m")
