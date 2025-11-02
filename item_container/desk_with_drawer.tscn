@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://l0tc0oshsb04"]
+
+[ext_resource type="PackedScene" uid="uid://h577waryfqee" path="res://item_container/item_container.tscn" id="1_vfnnw"]
+[ext_resource type="Texture2D" uid="uid://ciojpd0fqk62p" path="res://interior/textures/bedroom/desk_with_drawer.png" id="2_lcssh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20ss1"]
+size = Vector3(1, 0.6, 0.3)
+
+[node name="ItemContainer" instance=ExtResource("1_vfnnw")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("2_lcssh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+shape = SubResource("BoxShape3D_20ss1")
