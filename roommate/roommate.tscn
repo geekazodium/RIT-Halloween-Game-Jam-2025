@@ -236,7 +236,7 @@ metadata/_custom_type_script = "uid://j8am2d5qhph7"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.25
+path_desired_distance = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -288,6 +288,7 @@ wish_dir = NodePath("../RoommateWishDir")
 character_body = NodePath("..")
 current_room_detector = NodePath("../CurrentRoomDetector")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
+chase_player_time = 3.5
 
 [node name="DropShadow" parent="." instance=ExtResource("16_fnlvw")]
 skeleton = NodePath("../CurrentRoomDetector")
@@ -299,6 +300,8 @@ collision_mask = 64
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CurrentRoomDetector"]
 shape = SubResource("BoxShape3D_84skn")
 debug_color = Color(0.66625464, 0.3141251, 1, 0.41960785)
+
+[connection signal="suspicious_player_detected" from="PlayerDetection3D" to="RoommateTaskManager" method="_on_suspicious_player_detected"]
 
 [node name="Bubble" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.8489128, 0.65014553, 0.15282917)

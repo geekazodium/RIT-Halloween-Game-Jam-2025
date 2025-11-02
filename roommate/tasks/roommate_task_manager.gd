@@ -21,7 +21,7 @@ var rooms_to_check: Array[Room];
 var target_room: Room:
 	get:
 		if rooms_to_check.size() == 0:
-			self._init_room_search_order();
+			self._init_room_search_order(self.character_body.global_position);
 		return rooms_to_check[0];
 
 @export var search_container_timer: float = 2;
@@ -63,6 +63,9 @@ func _physics_process(delta: float) -> void:
 	if self.current_task == null:
 		self.wish_dir.target = RoommateGlobalRef.exit_target;
 		return;
+	if self.override_chase_player || self.memory_location != null:
+		self._chase_player(delta);
+		return;
 	match self._state:
 		State.CheckRememberedItem:
 			self._nav_to_last_remembered(delta);
@@ -92,18 +95,18 @@ func _nav_to_last_remembered(delta: float) -> void:
 			self.character_body.swap_item_with_container(container);
 			self._start_task();
 		else:
-			self._init_room_search_order();
+			self._init_room_search_order(self.character_body.global_position);
 			self._state = State.SearchForItemSearchRoom;
 
-func _init_room_search_order() -> void:
+func _init_room_search_order(pos: Vector3) -> void:
 	print("reinitializing order of room search");
 	self.rooms_to_check.clear();
 	for room in WorldRooms.rooms:
 		self._add_room_to_check(room);
 	self.rooms_to_check.sort_custom(
 		func(a: Room, b: Room):
-			var a_distance: float = a.bounding_box.global_position.distance_squared_to(self.character_body.global_position);
-			var b_distance: float = b.bounding_box.global_position.distance_squared_to(self.character_body.global_position);
+			var a_distance: float = a.bounding_box.global_position.distance_squared_to(pos);
+			var b_distance: float = b.bounding_box.global_position.distance_squared_to(pos);
 			return a_distance > b_distance;
 	);
 
@@ -121,6 +124,9 @@ func _move_to_next_room() -> void:
 	if self.check_give_up():
 		return;
 	self.wish_dir.target = self.target_room.bounding_box;
+	self._check_interrupt_traversal_with_this_room();
+
+func _check_interrupt_traversal_with_this_room() -> void:
 	for area in self.current_room_detector.get_overlapping_areas():
 		var room = area.get_parent() as Room;
 		if room == null:
@@ -129,6 +135,7 @@ func _move_to_next_room() -> void:
 		if index != -1:
 			self._init_room_search(self.rooms_to_check[index]);
 			self.rooms_to_check.remove_at(index);
+	
 
 func _init_room_search(room: Room):
 	print("initializing room search for room ", room);
@@ -189,3 +196,51 @@ func _go_to_target_container(delta: float) -> void:
 			self.character_body.swap_item_with_container(target_container);
 			self._init_next_task();
 			print("task done!");
+
+
+@export var chase_player_time: float = 1;
+var chase_player_time_left: float = 0;
+var player_to_follow: Player;
+
+var last_player_suspicion_position: Vector3;
+
+var override_chase_player: bool:
+	get:
+		return chase_player_time_left > 0;
+
+func _is_holding_current_task_item(player: Player) -> bool:
+	if self.current_task == null || player.held_item == null:
+		return false;
+	if player.held_item.key != self.current_task.item_needed:
+		return false;
+	return true
+
+func _on_suspicious_player_detected(player: Player) -> void:
+	if !self._is_holding_current_task_item(player):
+		return;
+	self.chase_player_time_left = self.chase_player_time;
+	self.player_to_follow = player;
+
+var memory_location: Node3D;
+
+func _chase_player(delta: float) -> void:
+	self.chase_player_time_left -= delta;
+	if !self.override_chase_player:
+		## executes on first iter where it was chasing player but then isnt
+		if self.memory_location == null:
+			self.memory_location = Node3D.new();
+			self.add_child(self.memory_location);
+		self.wish_dir.target = self.memory_location;
+		self.memory_location.global_position = self.last_player_suspicion_position;
+		if self.wish_dir.is_in_range:
+			self._init_room_search_order(self.last_player_suspicion_position);
+			self.current_room_to_check = null;
+			self.memory_location.queue_free();
+			self.memory_location = null;
+			self._check_interrupt_traversal_with_this_room();
+	else:
+		self.wish_dir.target = self.player_to_follow;
+		#fix: roommate should now search for items starting with the last place 
+		#the player had their item (even if they can't see that)
+		if self._is_holding_current_task_item(self.player_to_follow):
+			self.last_player_suspicion_position = self.player_to_follow.global_position;

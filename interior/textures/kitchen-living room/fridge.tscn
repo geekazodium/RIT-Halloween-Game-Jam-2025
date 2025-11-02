@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://m88ecgc8v8i0"]
+
+[ext_resource type="Texture2D" uid="uid://f84p88ppaf5w" path="res://interior/textures/kitchen-living room/fridge.png" id="1_rln72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d2qhv"]
+size = Vector3(1, 1.6, 0.3)
+
+[node name="Fridge" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_rln72")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_d2qhv")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://udb7hx3agyki"]
+
+[ext_resource type="Texture2D" uid="uid://c0q28fd6g2d2w" path="res://interior/textures/kitchen-living room/oven.png" id="1_3r7cl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8cbr"]
+size = Vector3(0.7, 0.7, 0.3)
+
+[node name="Oven" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_3r7cl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b8cbr")
