@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvkfb6p8rrrwb"]
+[gd_scene load_steps=5 format=3 uid="uid://dvkfb6p8rrrwb"]
 
 [ext_resource type="Script" uid="uid://ckukrgykl8uua" path="res://pause_menu/pause_menu.gd" id="1_hdmo1"]
 [ext_resource type="Texture2D" uid="uid://ds4y0ykv5heqj" path="res://pause_menu/textures/pause_screen.png" id="2_rd7dy"]
 [ext_resource type="Texture2D" uid="uid://c614evxtp3elb" path="res://pause_menu/textures/unchecked.png" id="3_uwtdo"]
+[ext_resource type="AudioStream" uid="uid://ddnoe1jg88rjs" path="res://sounds/menue_interact.wav" id="4_b4s0c"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_menu", "resume_image", "exit_image")]
 visible = false
@@ -63,6 +64,9 @@ offset_top = 376.0
 offset_right = 560.0
 offset_bottom = 458.0
 texture = ExtResource("3_uwtdo")
+
+[node name="menu_interact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b4s0c")
 
 [connection signal="mouse_entered" from="Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="mouse_exited" from="Resume" to="." method="_on_resume_mouse_exited"]
