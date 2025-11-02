@@ -208,14 +208,18 @@ var override_chase_player: bool:
 	get:
 		return chase_player_time_left > 0;
 
-func _on_suspicious_player_detected(player: Player) -> void:
+func _is_holding_current_task_item(player: Player) -> bool:
 	if self.current_task == null || player.held_item == null:
-		return;
+		return false;
 	if player.held_item.key != self.current_task.item_needed:
+		return false;
+	return true
+
+func _on_suspicious_player_detected(player: Player) -> void:
+	if !self._is_holding_current_task_item(player):
 		return;
 	self.chase_player_time_left = self.chase_player_time;
 	self.player_to_follow = player;
-	self.last_player_suspicion_position = player.global_position;
 
 var memory_location: Node3D;
 
@@ -236,3 +240,7 @@ func _chase_player(delta: float) -> void:
 			self._check_interrupt_traversal_with_this_room();
 	else:
 		self.wish_dir.target = self.player_to_follow;
+		#fix: roommate should now search for items starting with the last place 
+		#the player had their item (even if they can't see that)
+		if self._is_holding_current_task_item(self.player_to_follow):
+			self.last_player_suspicion_position = self.player_to_follow.global_position;
