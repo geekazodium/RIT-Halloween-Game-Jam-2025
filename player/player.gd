@@ -2,6 +2,7 @@ extends UMCharacterBody3D
 class_name Player
 
 var interact_time : float = 1
+@onready var interact_sound_player : AudioStreamPlayer = $interacting
 
 @export var ideal_speed: float = 2;
 @export var input_force_strength: float = 10;
@@ -22,7 +23,9 @@ func _process(_delta: float) -> void:
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
 			if node is ItemContainer:
+				interact_sound_player.play(randf_range(5.0,30.0))
 				await get_tree().create_timer(interact_time).timeout
+				interact_sound_player.stop()
 				if Input.is_action_pressed("interact"):
 					if node.item != null and held_item == null:
 						# Take item
@@ -39,6 +42,8 @@ func _process(_delta: float) -> void:
 						node.item = held_item
 						held_item = null
 						if node.item: print("Container now has: ", node.item.key)
+	if Input.is_action_just_released("interact"):
+		interact_sound_player.stop()
 	play_animation()
 
 

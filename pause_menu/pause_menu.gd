@@ -1,6 +1,8 @@
 extends Control
 class_name PauseMenu
 
+@onready var menu_interact_sound_player : AudioStreamPlayer = $menu_interact
+
 @export var pause_menu: Control
 @export var resume_image: TextureRect
 @export var exit_image: TextureRect
@@ -22,12 +24,14 @@ func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu/menu.tscn");
 
 func _on_resume_mouse_entered() -> void:
+	menu_interact_sound_player.play()
 	resume_image.texture = checked
 
 func _on_resume_mouse_exited() -> void:
 	resume_image.texture = unchecked
 
 func _on_quit_mouse_entered() -> void:
+	menu_interact_sound_player.play()
 	exit_image.texture = checked
 
 func _on_quit_mouse_exited() -> void:
