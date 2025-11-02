@@ -191,7 +191,7 @@ height = 0.5680237
 radius = 0.69873047
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "wishDir", "movement_direction")]
-collision_layer = 34
+collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_rkbax")
 sprite = NodePath("AnimatedSprite3D")
