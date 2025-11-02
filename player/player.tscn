@@ -208,7 +208,11 @@ script = ExtResource("3_g1dw6")
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="InteractionRange" type="Area3D" parent="."]
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionRange"]
 shape = SubResource("SphereShape3D_g1dw6")
 debug_color = Color(0.99638575, 0, 0.19645768, 0.41960785)
+
+[connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]
