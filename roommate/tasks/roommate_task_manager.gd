@@ -211,6 +211,8 @@ func _go_to_target_container(delta: float) -> void:
 var chase_player_time_left: float = 0;
 var player_to_follow: Player;
 
+@onready var chasing_sound_player : AudioStreamPlayer = $chasing_sound
+
 var last_player_suspicion_position: Vector3;
 
 var override_chase_player: bool:
@@ -227,6 +229,8 @@ func _is_holding_current_task_item(player: Player) -> bool:
 func _on_suspicious_player_detected(player: Player) -> void:
 	if !self._is_holding_current_task_item(player):
 		return;
+	if not self.override_chase_player:
+		chasing_sound_player.play()
 	self.chase_player_time_left = self.chase_player_time;
 	self.player_to_follow = player;
 
