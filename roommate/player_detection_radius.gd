@@ -35,6 +35,10 @@ func _physics_process(delta: float) -> void:
 			continue;
 		
 		self.suspicion += self._get_suspicion_per_second(body as CharacterBody3D) * delta;
+		var player_coll: Player = body as Player;
+		if player_coll != null: 
+			self.suspicious_player_detected.emit(player_coll);
+		print("sus");
 		suspicious = true;
 	if !suspicious:
 		self.suspicion = max(self.suspicion - self.suspicion_decay_per_second * delta,0);
@@ -47,15 +51,12 @@ func _check_line_of_sight(body: PhysicsBody3D) -> bool:
 	return self.is_colliding_with_suspicious_body(body.global_position - Vector3.DOWN * .1);
 
 func is_colliding_with_suspicious_body(global_pos: Vector3) -> bool:
-	self.line_of_sight.target_position = global_pos - self.line_of_sight.global_position;
+	self.line_of_sight.target_position = self.line_of_sight.to_local(global_pos);
 	self.line_of_sight.target_position *= 1.1;
 	self.line_of_sight.force_raycast_update();
 	var coll = self.line_of_sight.get_collider();
 	if coll is CollisionObject3D:
 		if coll.get_collision_layer_value(SUSPICIOUS_LAYER):
-			var player_coll: Player = coll as Player;
-			if player_coll != null: 
-				self.suspicious_player_detected.emit(player_coll);
 			return true;
 	return false;
 
