@@ -38,11 +38,16 @@ func _process(_delta: float) -> void:
 	if self.held_item != null:
 		self.held_item.visible = true;
 	
+	$CanvasLayer.visible = self.interacting;
+	if self.interacting:
+		$CanvasLayer/Control/ProgressBar.value = self.interaction_timer.time_left;
+	
 	if Input.is_action_just_pressed("interact") && !self.interacting:
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
 			if node is ItemContainer:
 				interact_sound_player.play(randf_range(5.0,30.0))
+				$CanvasLayer/Control/ProgressBar.max_value = node.time_to_interact;
 				self.interaction_timer = get_tree().create_timer(node.time_to_interact);
 				await self.interaction_timer.timeout;
 				if Input.is_action_pressed("interact"):
@@ -61,6 +66,7 @@ func _process(_delta: float) -> void:
 						node.item = held_item
 						held_item = null
 						if node.item: print("Container now has: ", node.item.key)
+				break;
 	if Input.is_action_just_released("interact"):
 		self.interacting = false;
 		self.interaction_timer = null;
@@ -101,7 +107,7 @@ func play_animation():
 func _on_interaction_range_area_entered(area: Area3D) -> void:
 	var body = area.get_parent()
 	if body is ItemContainer:
-		body.show_item()
+		body.show_item.call_deferred();
 
 
 func _on_interaction_range_area_exited(area: Area3D) -> void:
