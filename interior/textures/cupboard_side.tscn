@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c4kjurmn6u7kw"]
+
+[node name="CupboardSide" type="StaticBody3D"]
