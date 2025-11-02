@@ -1,13 +1,14 @@
-[gd_scene load_steps=36 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=40 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
 [ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
+[ext_resource type="Shader" uid="uid://c7ldgermgloyt" path="res://roommate/roommate_visibility_cone.gdshader" id="4_fnlvw"]
 [ext_resource type="Script" uid="uid://7powfstf3a7g" path="res://roommate/tasks/roommate_task_manager.gd" id="5_xhgch"]
 [ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="6_84skn"]
-[ext_resource type="Resource" uid="uid://bh6srx70633dx" path="res://roommate/tasks/brush_teeth.tres" id="7_f6468"]
 [ext_resource type="Texture2D" uid="uid://cq736ljv10i8s" path="res://roommate/Roommate Sprites/roommate_standing_holding_back.png" id="7_0k75t"]
+[ext_resource type="Resource" uid="uid://bh6srx70633dx" path="res://roommate/tasks/brush_teeth.tres" id="7_f6468"]
 [ext_resource type="Texture2D" uid="uid://ctf0x6cofdpfr" path="res://roommate/Roommate Sprites/Josh_standing_holding_front.png" id="8_ujk3v"]
 [ext_resource type="Texture2D" uid="uid://cxdpuns4rhjcx" path="res://roommate/Roommate Sprites/roommate_walking_back_holding_sheet.png" id="9_fnlvw"]
 [ext_resource type="Texture2D" uid="uid://bywt28dlxn0xb" path="res://roommate/Roommate Sprites/roommate_walking_front_holding_sheet.png" id="10_mpwyi"]
@@ -35,58 +36,9 @@ material = SubResource("StandardMaterial3D_f6468")
 height = 0.001
 cap_bottom = false
 
-[sub_resource type="Shader" id="Shader_f6468"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix, depth_draw_never, cull_back, diffuse_burley, specular_disabled, unshaded, depth_prepass_alpha;
-
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
-uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
-
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-void vertex() {
-	float a = dot(normalize(VERTEX), vec3(1,0,0));
-	if (a < cos(PI/4.)){
-		VERTEX = vec3(0,0,0);
-	}
-	UV = UV * uv1_scale.xy + uv1_offset.xy;
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-
-	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	ALPHA *= albedo.a * albedo_tex.a;
-}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhfs1"]
 render_priority = 0
-shader = SubResource("Shader_f6468")
+shader = ExtResource("4_fnlvw")
 shader_parameter/albedo = Color(1, 0.02745098, 1, 0.1882353)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
