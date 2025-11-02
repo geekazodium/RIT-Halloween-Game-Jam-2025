@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=15 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
@@ -6,21 +6,90 @@
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
 [ext_resource type="Script" uid="uid://7powfstf3a7g" path="res://roommate/tasks/roommate_task_manager.gd" id="5_xhgch"]
 [ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="6_84skn"]
+[ext_resource type="Resource" uid="uid://bh6srx70633dx" path="res://roommate/tasks/brush_teeth.tres" id="7_f6468"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_84skn"]
 height = 1.2
 radius = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
-radius = 6.7559624
+radius = 4.0
 
-[sub_resource type="Resource" id="Resource_f6468"]
-script = ExtResource("6_84skn")
-item_needed = &"toothbrush"
-container_key = &"sink"
-seconds_required = 5.0
-seconds_until_give_up = 20.0
-metadata/_custom_type_script = "uid://bsbux4pkc65tr"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6468"]
+transparency = 4
+depth_draw_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(1, 0.02745098, 1, 0.1882353)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f6468"]
+material = SubResource("StandardMaterial3D_f6468")
+height = 0.001
+cap_bottom = false
+
+[sub_resource type="Shader" id="Shader_f6468"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_never, cull_back, diffuse_burley, specular_disabled, unshaded, depth_prepass_alpha;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	float a = dot(normalize(VERTEX), vec3(1,0,0));
+	if (a < cos(PI/4.)){
+		VERTEX = vec3(0,0,0);
+	}
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhfs1"]
+render_priority = 0
+shader = SubResource("Shader_f6468")
+shader_parameter/albedo = Color(1, 0.02745098, 1, 0.1882353)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
 size = Vector3(0.5, 1, 0.5)
@@ -42,15 +111,29 @@ shape = SubResource("CylinderShape3D_84skn")
 transform = Transform3D(0.30247992, 0, 0, 0, 0.73982984, 0, 0, 0, 1.9677868, 0, 0, 0)
 texture = ExtResource("2_a3oh8")
 
-[node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src")]
+[node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src", "display_mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08082914, 0)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("3_cw58l")
 direction_src = NodePath("..")
+display_mesh = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection3D"]
 shape = SubResource("SphereShape3D_ae4i6")
+
+[node name="SuspicionLineOfSight" type="RayCast3D" parent="PlayerDetection3D"]
+enabled = false
+collision_mask = 33
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDetection3D"]
+transform = Transform3D(8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, -0.6, 0)
+mesh = SubResource("CylinderMesh_f6468")
+surface_material_override/0 = SubResource("ShaderMaterial_yhfs1")
 
 [node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node")]
 process_physics_priority = -1
@@ -62,7 +145,7 @@ metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "character_body", "current_room_detector", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
-tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
+tasks = Array[ExtResource("6_84skn")]([ExtResource("7_f6468")])
 wish_dir = NodePath("../RoommateWishDir")
 character_body = NodePath("..")
 current_room_detector = NodePath("../CurrentRoomDetector")

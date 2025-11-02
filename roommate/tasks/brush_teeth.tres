@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoommateTask" load_steps=2 format=3 uid="uid://bh6srx70633dx"]
+
+[ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="1_m32p0"]
+
+[resource]
+script = ExtResource("1_m32p0")
+item_needed = &"toothbrush"
+container_key = &"sink"
+seconds_required = 5.0
+seconds_until_give_up = 20.0
+metadata/_custom_type_script = "uid://bsbux4pkc65tr"
