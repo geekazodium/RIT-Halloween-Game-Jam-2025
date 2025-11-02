@@ -24,12 +24,16 @@ func _ready() -> void:
 	for task in manager.tasks:
 		var task_display = task_display_scene.instantiate();
 		task_display.get_child(1).texture = task_dict.get(str(task.item_needed));
-		print(pack_lunch)
-		print(task_dict.get(str(task.item_needed)));
-		print(typeof(str(task.item_needed)), str(task.item_needed) == task.item_needed)
-
 		vertical_container.add_child(task_display);
+	
+	manager.task_status_updated.connect(_on_task_status_updated)
 
+func _on_task_status_updated(index: int, status: RoommateTask.TaskStatus) -> void:
+	if status == RoommateTask.TaskStatus.COMPLETE and $VBoxContainer.get_child_count() > index:
+		$VBoxContainer.get_child(index).complete()
+	elif status == RoommateTask.TaskStatus.GAVE_UP:
+		$VBoxContainer.get_child(index).burnt_out()
+	
 func _process(_delta):
 	var camera = get_viewport().get_camera_3d()
 	if camera:
@@ -40,3 +44,5 @@ func _process(_delta):
 			modulate.a = lerp(modulate.a, 0.3, 0.2) # fade
 		else:
 			modulate.a = lerp(modulate.a, 1.0, 0.2) # restore
+	
+	
