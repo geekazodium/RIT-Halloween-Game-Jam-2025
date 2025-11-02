@@ -7,5 +7,5 @@ script = ExtResource("1_m32p0")
 item_needed = &"toothbrush"
 container_key = &"sink"
 seconds_required = 5.0
-seconds_until_give_up = 20.0
+seconds_until_give_up = 35.0
 metadata/_custom_type_script = "uid://bsbux4pkc65tr"
