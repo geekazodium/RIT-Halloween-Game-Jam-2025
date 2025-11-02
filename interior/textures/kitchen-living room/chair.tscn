@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpcfjcjga7rne"]
+
+[ext_resource type="Texture2D" uid="uid://cwlq7w74ty2y3" path="res://interior/textures/kitchen-living room/chair.png" id="1_bjjsq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ppnm"]
+size = Vector3(0.3, 0.6, 0.2)
+
+[node name="Chair" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+sorting_offset = -0.5
+texture_filter = 2
+texture = ExtResource("1_bjjsq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2ppnm")

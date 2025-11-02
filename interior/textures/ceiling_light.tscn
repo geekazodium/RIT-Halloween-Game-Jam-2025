@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://doleokbdix7n0"]
+
+[ext_resource type="Texture2D" uid="uid://hdrt6scigj2c" path="res://interior/textures/ceiling_light.png" id="1_ipynq"]
+
+[node name="CeilingLight" type="Sprite3D"]
+texture_filter = 2
+texture = ExtResource("1_ipynq")
