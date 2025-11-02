@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5h33v7a3rtj"]
+
+[ext_resource type="Script" uid="uid://2m07tfhj630y" path="res://roommate/roommate_exit_area.gd" id="1_6hdq6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kek77"]
+size = Vector3(1, 1.7711182, 0.5740967)
+
+[node name="RoommateExitArea" type="Area3D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_6hdq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kek77")

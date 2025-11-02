@@ -6,8 +6,15 @@ var suspicion: float:
 	get:
 		return _player_detection.suspicion;
 
+var roommate_task_manager: RoommateTaskManager:
+	get:
+		return $RoommateTaskManager;
 @onready var _player_detection: PlayerDetectionRadius = $PlayerDetection3D;
 
+@export_category("level settings")
+@export var seconds_until_late: float;
+
+@export_category("Character Settings")
 @export var ideal_speed: float = 5;
 @export var input_force_strength: float = 10;
 
@@ -15,6 +22,9 @@ var suspicion: float:
 var looking_forward: bool = false;
 
 var held_item: Item;
+
+func _ready() -> void:
+	RoommateGlobalRef.add_roommate(self);
 
 func _get_ideal_speed() -> float:
 	return self.ideal_speed;
@@ -63,3 +73,10 @@ func swap_item_with_container(container: ItemContainer) -> void:
 	if self.held_item != null: $HeldItemSlot.remove_child(self.held_item);
 	self.held_item = container.swap_item(self.held_item);
 	if self.held_item != null: $HeldItemSlot.add_child(self.held_item);
+
+func leave_level() -> void:
+	RoommateGlobalRef.roommate_leave(self);
+	self.queue_free();
+
+func _exit_tree() -> void:
+	pass;

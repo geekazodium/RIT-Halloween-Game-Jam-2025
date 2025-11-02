@@ -61,7 +61,7 @@ func _add_room_to_check(room: Room) -> void:
 
 func _physics_process(delta: float) -> void:
 	if self.current_task == null:
-		print("roommate is leaving");
+		self.wish_dir.target = RoommateGlobalRef.exit_target;
 		return;
 	match self._state:
 		State.CheckRememberedItem:
