@@ -8,6 +8,8 @@ var target: Node3D;
 
 var is_in_range: bool:
 	get:
+		if self.nav_agent.get_current_navigation_path().size() == 0:
+			return false;
 		return self.nav_agent.get_path_length() <= distance_tolerance;
 
 var direction_vec: Vector2 = Vector2.RIGHT;

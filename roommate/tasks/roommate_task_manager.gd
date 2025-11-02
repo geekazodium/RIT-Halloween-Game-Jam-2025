@@ -10,10 +10,19 @@ var current_task: RoommateTask:
 
 @export var wish_dir: RoommateWishDir;
 
+@export var character_body: RoommateCharacterBody;
+
 @export var room_enter_detection_area: Area3D;
 ## CAUTION: this assumes the rooms in global never get changed *while*
 ## roommate is trying to find something;
 var rooms_to_check: Array[Room];
+var next_room_to_check: Room:
+	get:
+		if rooms_to_check.size() == 0:
+			#self.rooms_to_check = 
+			pass
+		return rooms_to_check[0];
+
 
 var _state: State;
 
@@ -50,7 +59,16 @@ func _nav_to_last_remembered() -> void:
 		return;
 	self.wish_dir.target = container;
 	if self.wish_dir.is_in_range:
-		container.item_matches(item_key);
+		var matches: bool = container.item_matches(item_key);
+		if matches:
+			self._state = State.GoToTargetContainer;
+			self.character_body.held_item = container.take_item();
+		else:
+			self._state = State.SearchForItem;
+
+func _init_item_search() -> void:
+	pass
 
 func _search_containers_for_item() -> void:
-	return;
+	
+	pass

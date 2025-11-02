@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://lteimira8ato"]
+[gd_scene load_steps=8 format=3 uid="uid://lteimira8ato"]
 
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="1_isfej"]
 [ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_5dwm4"]
 [ext_resource type="PackedScene" uid="uid://bpfcifw7tvbxx" path="res://roommate/roommate.tscn" id="3_5dwm4"]
 [ext_resource type="PackedScene" uid="uid://cwp08u0noxq7t" path="res://item_container/sink.tscn" id="4_meyvv"]
 [ext_resource type="PackedScene" uid="uid://ba1rijnl73c4r" path="res://items/item.tscn" id="4_xfdkg"]
+[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="5_fqpr6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
-vertices = PackedVector3Array(-0.4666512, -0.505, -1.2468466, -1.9666512, -0.505, -1.2468466, -1.9666512, -0.505, -0.74684656, -2.2166512, -0.505, -0.74684656, -1.9666512, -0.505, 1.0031534, 4.783349, -0.505, -1.2468466, 3.0333488, -0.505, -1.2468466, 3.0333488, -0.505, -0.74684656, 3.0333488, -0.505, 0.25315344, 2.5333488, -0.505, -0.49684656, 2.5333488, -0.505, 0.0031534433, 7.283349, -0.505, -1.2468466, 4.783349, -0.505, -1.4968466, 2.2833488, -0.505, 1.0031534, 2.2833488, -0.505, -1.2468466, -0.4666512, -0.505, -1.4968466, 3.0333488, -0.505, 0.75315344, 7.283349, -0.505, 0.75315344)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(7, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(8, 7, 5), PackedInt32Array(5, 12, 11), PackedInt32Array(9, 13, 14), PackedInt32Array(14, 13, 0), PackedInt32Array(0, 13, 2), PackedInt32Array(2, 13, 4), PackedInt32Array(0, 15, 14), PackedInt32Array(9, 10, 13), PackedInt32Array(8, 5, 16), PackedInt32Array(16, 5, 11), PackedInt32Array(16, 11, 17)]
+vertices = PackedVector3Array(2.5333488, 1.495, 1.262896, 2.7833488, 1.495, 2.262896, 7.283349, 1.495, 2.262896, 7.283349, 1.495, -0.23710406, 2.7833488, 1.495, -0.23710406, 2.5333488, 1.495, -0.48710406, 2.5333488, 1.495, -1.487104, -2.2166512, 1.495, -1.487104, -2.2166512, 1.495, 1.262896, 2.2833488, -0.505, -0.23710406, 2.2833488, -0.505, -1.237104, 1.0333488, -0.505, -1.237104, 2.5333488, -0.505, 0.012895942, -2.2166512, -0.505, -1.237104, -1.9666512, -0.505, 1.012896, 2.2833488, -0.505, 1.012896, 7.283349, -0.505, 0.012895942, 5.283349, -0.505, -0.23710406, 5.283349, -0.505, 0.012895942, 7.283349, -0.505, 2.262896, 3.0333488, -0.505, 0.76289594, 3.0333488, -0.505, 2.262896, 1.0333488, -0.255, -1.487104, 2.7833488, -0.505, 0.51289594)
+polygons = [PackedInt32Array(0, 4, 1), PackedInt32Array(1, 4, 3), PackedInt32Array(1, 3, 2), PackedInt32Array(7, 6, 5), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 8), PackedInt32Array(5, 8, 7), PackedInt32Array(11, 10, 9), PackedInt32Array(12, 15, 9), PackedInt32Array(9, 15, 11), PackedInt32Array(11, 15, 14), PackedInt32Array(11, 14, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 16), PackedInt32Array(21, 16, 19), PackedInt32Array(13, 22, 11), PackedInt32Array(15, 12, 23), PackedInt32Array(23, 12, 20), PackedInt32Array(20, 12, 18)]
 geometry_parsed_geometry_type = 1
 geometry_collision_mask = 1
 geometry_source_geometry_mode = 1
@@ -35,8 +36,12 @@ _key = &"sink"
 [node name="Item" parent="Room/ItemContainer" instance=ExtResource("4_xfdkg")]
 key = &"toothbrush"
 
+[node name="Sprite3D" type="Sprite3D" parent="Room/ItemContainer/Item"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.4647665, 0)
+texture = ExtResource("5_fqpr6")
+
 [node name="Room2" parent="." groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, -0.24184656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, 1.0355314)
 
 [node name="Roommate" parent="." instance=ExtResource("3_5dwm4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6877255, 0.10857713, 1.2728959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3105884, 0.10857713, 1.3812495)

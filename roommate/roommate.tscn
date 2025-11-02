@@ -58,10 +58,11 @@ current_position_node = NodePath("..")
 distance_tolerance = 0.2
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
-[node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "room_enter_detection_area")]
+[node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "character_body", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
 tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
 wish_dir = NodePath("../RoommateWishDir")
+character_body = NodePath("..")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
 
 [node name="CurrentRoomDetector" type="Area3D" parent="."]
