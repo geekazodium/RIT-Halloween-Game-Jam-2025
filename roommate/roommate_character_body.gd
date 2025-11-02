@@ -23,17 +23,23 @@ func _get_input_force_strength() -> float:
 	return self.input_force_strength;
 
 func _physics_process(delta: float) -> void:
+	var view = self.get_viewport();
+	if view != null:
+		var camera: Camera3D = view.get_camera_3d();
+		if camera != null:
+			self.global_rotation.y = camera.global_rotation.y;
 	super._physics_process(delta);
 	var direction_vec: Vector2 = self.movement_direction.get_input_xz().rotated(self.rotation.y);
+	direction_vec = direction_vec.normalized();
 	
-	if sign(direction_vec.y) == 1:
+	if direction_vec.y > sin(PI/8):
 		looking_forward = true;
-	elif sign(direction_vec.y) == -1:
+	elif direction_vec.y < -sin(PI/8):
 		looking_forward = false;
 	
-	if sign(direction_vec.x) == 1:
+	if direction_vec.x > sin(PI/8):
 		sprite.flip_h = true;
-	elif sign(direction_vec.x) == -1:
+	elif direction_vec.x < -sin(PI/8):
 		sprite.flip_h = false;
 	
 	var animation = ""

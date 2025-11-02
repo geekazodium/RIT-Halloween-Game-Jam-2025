@@ -223,7 +223,7 @@ size = Vector3(0.5, 1, 0.5)
 [node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "movement_direction")]
 collision_layer = 0
 script = ExtResource("1_f53c4")
-ideal_speed = 2.0
+ideal_speed = 1.0
 sprite = NodePath("AnimatedSprite3D")
 movement_direction = NodePath("RoommateWishDir")
 metadata/_custom_type_script = "uid://j8am2d5qhph7"
@@ -232,10 +232,11 @@ metadata/_custom_type_script = "uid://j8am2d5qhph7"
 path_desired_distance = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CylinderShape3D_84skn")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.968, 0, 0, 0, 1.968, 0, 0, 0, 1.968, 0.0008043274, -0.012403309, -0.005384907)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_f07u3")
 animation = &"holding_standing_back"
@@ -281,6 +282,7 @@ current_room_detector = NodePath("../CurrentRoomDetector")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
 
 [node name="CurrentRoomDetector" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 64
 
