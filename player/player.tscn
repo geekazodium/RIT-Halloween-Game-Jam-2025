@@ -184,10 +184,13 @@ radius = 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_g1dw6"]
 radius = 0.97572654
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "wishDir", "area", "movement_direction")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_rkbax")
+sprite = NodePath("AnimatedSprite3D")
+wishDir = NodePath("PlayerWishDir")
+area = NodePath("InteractionRange")
 movement_direction = NodePath("PlayerWishDir")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -200,9 +203,8 @@ animation = &"holding_walking_back"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CylinderShape3D_hg6s5")
 
-[node name="PlayerWishDir" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+[node name="PlayerWishDir" type="Node" parent="."]
 script = ExtResource("3_g1dw6")
-sprite = NodePath("../AnimatedSprite3D")
 metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="InteractionRange" type="Area3D" parent="."]
