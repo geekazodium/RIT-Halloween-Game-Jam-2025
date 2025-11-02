@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciojpd0fqk62p"
-path.s3tc="res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"
+uid="uid://bh4r7hdf8th3i"
+path.s3tc="res://.godot/imported/roommate_standing_back.png-c99cb59ad651e25c40d5cc3efdabfd4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://interior/textures/bedroom/desk_with_drawer.png"
-dest_files=["res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"]
+source_file="res://roommate/Roommate Sprites/roommate_standing_back.png"
+dest_files=["res://.godot/imported/roommate_standing_back.png-c99cb59ad651e25c40d5cc3efdabfd4e.s3tc.ctex"]
 
 [params]
 

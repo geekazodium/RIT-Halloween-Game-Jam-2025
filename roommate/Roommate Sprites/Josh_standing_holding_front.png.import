@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciojpd0fqk62p"
-path.s3tc="res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"
+uid="uid://ctf0x6cofdpfr"
+path.s3tc="res://.godot/imported/Josh_standing_holding_front.png-e8ff55632a9c288709a68488e709b15a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://interior/textures/bedroom/desk_with_drawer.png"
-dest_files=["res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"]
+source_file="res://roommate/Roommate Sprites/Josh_standing_holding_front.png"
+dest_files=["res://.godot/imported/Josh_standing_holding_front.png-e8ff55632a9c288709a68488e709b15a.s3tc.ctex"]
 
 [params]
 
