@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://v1tew1dknbww"]
+
+[ext_resource type="PackedScene" uid="uid://ba1rijnl73c4r" path="res://items/item.tscn" id="1_fc7h3"]
+[ext_resource type="Texture2D" uid="uid://codkvoyjw61nt" path="res://items/textures/paperbag.png" id="2_fc7h3"]
+
+[node name="Paperbag" instance=ExtResource("1_fc7h3")]
+key = &"paperbag"
+
+[node name="Sprite3D" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.16451061, 0)
+texture = ExtResource("2_fc7h3")
