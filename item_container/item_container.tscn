@@ -1,33 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://h577waryfqee"]
+[gd_scene load_steps=3 format=3 uid="uid://h577waryfqee"]
 
-[ext_resource type="Script" uid="uid://dybts4oglrh5y" path="res://container.gd" id="1_7us4m"]
-[ext_resource type="Texture2D" uid="uid://b4mtyqhwu6xjm" path="res://interior/textures/cupboard_front.png" id="2_7us4m"]
+[ext_resource type="Script" uid="uid://dybts4oglrh5y" path="res://item_container/container.gd" id="1_7us4m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7us4m"]
-height = 0.657423
 radius = 0.35742188
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7us4m"]
-size = Vector3(1, 0.5965576, 0.48815918)
 
 [node name="ItemContainer" type="Node3D"]
 script = ExtResource("1_7us4m")
 metadata/_custom_type_script = "uid://dybts4oglrh5y"
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-texture = ExtResource("2_7us4m")
 
 [node name="ItemHolder" type="Node3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022194862, 0)
 shape = SubResource("CylinderShape3D_7us4m")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042009354, -0.014301181, -0.25571114)
-shape = SubResource("BoxShape3D_7us4m")
+debug_color = Color(0.27187896, 0.6328456, 0, 0.41960785)

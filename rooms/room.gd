@@ -32,42 +32,39 @@ var area_shape : CollisionShape3D
 
 var doors : Array
 
-func _enter_tree() -> void:
-	if Engine.is_editor_hint():
-		return;
-	WorldRooms.room_enter_tree.call_deferred(self);
-
 func _exit_tree() -> void:
 	if Engine.is_editor_hint():
-		return;
-	WorldRooms.room_exit_tree(self);
+		WorldRooms.room_exit_tree(self);
 
 func _ready() -> void:
-		faces.resize(6)
-		faces[0] = $CSGCombiner3D/floor
-		faces[1] = $CSGCombiner3D/wall1
-		faces[2] = $CSGCombiner3D/wall2
-		faces[3] = $CSGCombiner3D/wall3
-		faces[4] = $CSGCombiner3D/wall4
-		faces[5] = $CSGCombiner3D/ceiling
-		doors.resize(3)
-		doors[0] = $CSGCombiner3D/door1
-		doors[1] = $CSGCombiner3D/door2
-		doors[2] = $CSGCombiner3D/door3
-		doors[0].size = Vector3(1.1,1.5,0.1)
-		doors[1].size = Vector3(1.1,1.5,0.1)
-		doors[2].size = Vector3(1.1,1.5,0.1)
-		doors[0].operation = 2
-		doors[1].operation = 2
-		doors[2].operation = 2
-		area_shape = $Area3D/CollisionShape3D
-		area_shape.shape = BoxShape3D.new()
-		resize()
-		
-		for child in get_children():
-			if child is Camera3D:
-				camera = child
-				break
+	if !Engine.is_editor_hint():
+		WorldRooms.room_enter_tree(self);
+   
+  faces.resize(6)
+  faces[0] = $CSGCombiner3D/floor
+  faces[1] = $CSGCombiner3D/wall1
+  faces[2] = $CSGCombiner3D/wall2
+  faces[3] = $CSGCombiner3D/wall3
+  faces[4] = $CSGCombiner3D/wall4
+  faces[5] = $CSGCombiner3D/ceiling
+  doors.resize(3)
+  doors[0] = $CSGCombiner3D/door1
+  doors[1] = $CSGCombiner3D/door2
+  doors[2] = $CSGCombiner3D/door3
+  doors[0].size = Vector3(1.1,1.5,0.1)
+  doors[1].size = Vector3(1.1,1.5,0.1)
+  doors[2].size = Vector3(1.1,1.5,0.1)
+  doors[0].operation = 2
+  doors[1].operation = 2
+  doors[2].operation = 2
+  area_shape = $Area3D/CollisionShape3D
+  area_shape.shape = BoxShape3D.new()
+  resize()
+
+  for child in get_children():
+    if child is Camera3D:
+      camera = child
+      break
 	
 
 func _process(_delta: float) -> void:
