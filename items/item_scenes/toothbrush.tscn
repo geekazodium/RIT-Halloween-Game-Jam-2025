@@ -5,6 +5,7 @@
 
 [node name="Toothbrush" instance=ExtResource("1_knrp2")]
 key = &"toothbrush"
+suspicious_val = 1
 
 [node name="Sprite3D" parent="." index="0"]
 texture = ExtResource("2_kml6p")
