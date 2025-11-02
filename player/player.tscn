@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctogltwif2nn2" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dc5yogkk65get" path="res://player/Player Sprites/player_standing_holding_back.png" id="2_rgyib"]
+[ext_resource type="Texture2D" uid="uid://dwsx7w8lade0w" path="res://player/Player Sprites/player_standing_holding_front.png" id="3_2ieo8"]
 [ext_resource type="Script" uid="uid://ceuemme6ee0kb" path="res://player/player_wish_dir.gd" id="3_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://c5dro2m5i5o40" path="res://player/Player Sprites/player_standing_back.png" id="3_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://b7digbqs2nkqb" path="res://player/Player Sprites/player_walking_back_holding_sheet.png" id="3_rgyib"]
@@ -10,10 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bsagh54echnen" path="res://player/Player Sprites/player_walking_back_sheet.png" id="5_rgyib"]
 [ext_resource type="Texture2D" uid="uid://baqynar6ci3cr" path="res://player/Player Sprites/player_walking_front.png" id="6_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://d25hw282gg4ji" path="res://character_body/drop_shadow.tscn" id="10_8t03j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4c7l"]
-atlas = ExtResource("5_hg6s5")
-region = Rect2(0, 0, 43, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
 atlas = ExtResource("3_rgyib")
@@ -91,7 +88,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4c7l")
+"texture": ExtResource("3_2ieo8")
 }],
 "loop": true,
 "name": &"holding_standing_front",
