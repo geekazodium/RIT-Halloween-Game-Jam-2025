@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bc4nvlho8sce8" path="res://to-do_list/to_do_list.gd" id="1_wgjcv"]
 [ext_resource type="Texture2D" uid="uid://xidwq5lfka5y" path="res://to-do_list/textures/to-do-blank.png" id="2_4wirm"]
 
-[node name="To-DoList" type="Control" node_paths=PackedStringArray("vertical_container", "raycast")]
+[node name="To-DoList" type="Control" node_paths=PackedStringArray("vertical_container")]
 modulate = Color(1, 1, 1, 0.6627451)
 layout_mode = 3
 anchors_preset = 15
@@ -16,7 +16,6 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_wgjcv")
 vertical_container = NodePath("VBoxContainer")
-raycast = NodePath("")
 
 [node name="EmptyListImage" type="TextureRect" parent="."]
 layout_mode = 0

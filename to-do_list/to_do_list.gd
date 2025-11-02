@@ -14,7 +14,7 @@ extends Control
 @onready var carve_pumpkin = load("res://to-do_list/textures/to_do_carve_pumpkin.png")
 
 func _ready() -> void:
-	print(global_position)
+	
 	if manager == null: 
 		return
 	manager = manager.get_node("RoommateTaskManager")

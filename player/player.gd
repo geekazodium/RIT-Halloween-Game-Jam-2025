@@ -18,12 +18,15 @@ var looking_forward = true
 
 func _process(_delta: float) -> void:
 	play_animation()
-	if Input.is_action_pressed("interact"):
-		for node in area.get_overlapping_bodies():
-			if node.get_class() == "ItemContainer":
+	if Input.is_action_just_pressed("interact"):
+		print("Player pressed interact s1")
+		for area in area.get_overlapping_areas():
+			print("node is in area overlap")
+			var node = area.get_parent()
+			if node is ItemContainer:
+				print("Node is container s3")
 				if node.item != null and held_item == null: #if container has item/player doesnt
-					held_item = node.item
-					node.item = null
+					held_item = node.take_item()
 					print("Player now has: ", held_item)
 				elif held_item != null: #if player has item/container doesnt
 					node.item = held_item
@@ -47,6 +50,8 @@ func play_animation():
 	
 	if held_item != null:
 		animation = "holding_"
+		held_item.visible = true
+		held_item.global_position = global_position + Vector3(0,1,0)
 	
 	if(direction_vec == Vector2.ZERO):
 		animation += "standing_"
@@ -57,7 +62,7 @@ func play_animation():
 		animation += "front"
 	else: 
 		animation += "back"
-	
+	print(held_item)
 	sprite.play(animation)
 
 func _on_interaction_range_area_entered(area: Area3D) -> void:

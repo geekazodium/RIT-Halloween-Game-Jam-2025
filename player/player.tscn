@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://bluyjdwt83jur"]
+[gd_scene load_steps=31 format=3 uid="uid://bluyjdwt83jur"]
 
 [ext_resource type="Script" uid="uid://ctogltwif2nn2" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dc5yogkk65get" path="res://player/Player Sprites/player_standing_holding_back.png" id="2_rgyib"]
+[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="3_2ieo8"]
 [ext_resource type="Script" uid="uid://ceuemme6ee0kb" path="res://player/player_wish_dir.gd" id="3_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://c5dro2m5i5o40" path="res://player/Player Sprites/player_standing_back.png" id="3_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://b7digbqs2nkqb" path="res://player/Player Sprites/player_walking_back_holding_sheet.png" id="3_rgyib"]
@@ -87,7 +88,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_boad6")
+"texture": ExtResource("3_2ieo8")
 }],
 "loop": true,
 "name": &"holding_standing_front",
@@ -199,7 +200,7 @@ movement_direction = NodePath("PlayerWishDir")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.075, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_8t03j")
-animation = &"holding_walking_back"
+animation = &"holding_standing_front"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
