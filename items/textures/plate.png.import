@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dt3vuleam5lxb"
-path.s3tc="res://.godot/imported/plate.png-8358cde9800cc835ed8320fede8c8b28.s3tc.ctex"
+path="res://.godot/imported/plate.png-8358cde9800cc835ed8320fede8c8b28.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://items/textures/plate.png"
-dest_files=["res://.godot/imported/plate.png-8358cde9800cc835ed8320fede8c8b28.s3tc.ctex"]
+dest_files=["res://.godot/imported/plate.png-8358cde9800cc835ed8320fede8c8b28.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

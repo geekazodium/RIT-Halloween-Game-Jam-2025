@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv0l3m75x7dpn"
-path.s3tc="res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.s3tc.ctex"
+path="res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://roommate/sus/speech_bubble_blank.png"
-dest_files=["res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.s3tc.ctex"]
+dest_files=["res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

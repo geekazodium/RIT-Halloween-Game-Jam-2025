@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hdrt6scigj2c"
-path.s3tc="res://.godot/imported/ceiling_light.png-16fcefa6c4e415a66a4a35aa502862ec.s3tc.ctex"
+path="res://.godot/imported/ceiling_light.png-16fcefa6c4e415a66a4a35aa502862ec.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/ceiling_light.png"
-dest_files=["res://.godot/imported/ceiling_light.png-16fcefa6c4e415a66a4a35aa502862ec.s3tc.ctex"]
+dest_files=["res://.godot/imported/ceiling_light.png-16fcefa6c4e415a66a4a35aa502862ec.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
