@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ecwiq788qceu"]
+
+[ext_resource type="Texture2D" uid="uid://jxixvpjqf41c" path="res://interior/textures/kitchen-living room/couch.png" id="1_opald"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdeq0"]
+size = Vector3(1.4, 0.75, 0.3)
+
+[node name="Couch" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_opald")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gdeq0")

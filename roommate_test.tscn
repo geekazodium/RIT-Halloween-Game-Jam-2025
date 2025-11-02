@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://lteimira8ato"]
+
+[ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="1_isfej"]
+[ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_5dwm4"]
+[ext_resource type="PackedScene" uid="uid://bpfcifw7tvbxx" path="res://roommate/roommate.tscn" id="3_5dwm4"]
+[ext_resource type="PackedScene" uid="uid://cwp08u0noxq7t" path="res://item_container/sink.tscn" id="4_meyvv"]
+[ext_resource type="PackedScene" uid="uid://ba1rijnl73c4r" path="res://items/item.tscn" id="4_xfdkg"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
+vertices = PackedVector3Array(-0.4666512, -0.505, -1.2468466, -1.9666512, -0.505, -1.2468466, -1.9666512, -0.505, -0.74684656, -2.2166512, -0.505, -0.74684656, -1.9666512, -0.505, 1.0031534, 4.783349, -0.505, -1.2468466, 3.0333488, -0.505, -1.2468466, 3.0333488, -0.505, -0.74684656, 3.0333488, -0.505, 0.25315344, 2.5333488, -0.505, -0.49684656, 2.5333488, -0.505, 0.0031534433, 7.283349, -0.505, -1.2468466, 4.783349, -0.505, -1.4968466, 2.2833488, -0.505, 1.0031534, 2.2833488, -0.505, -1.2468466, -0.4666512, -0.505, -1.4968466, 3.0333488, -0.505, 0.75315344, 7.283349, -0.505, 0.75315344)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(7, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(8, 7, 5), PackedInt32Array(5, 12, 11), PackedInt32Array(9, 13, 14), PackedInt32Array(14, 13, 0), PackedInt32Array(0, 13, 2), PackedInt32Array(2, 13, 4), PackedInt32Array(0, 15, 14), PackedInt32Array(9, 10, 13), PackedInt32Array(8, 5, 16), PackedInt32Array(16, 5, 11), PackedInt32Array(16, 11, 17)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 1
+geometry_source_geometry_mode = 1
+agent_height = 1.0
+agent_radius = 0.25
+edge_max_error = 0.75
+
+[node name="Node3D" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0xm2m")
+
+[node name="Player" parent="." instance=ExtResource("1_isfej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
+
+[node name="Room" parent="." node_paths=PackedStringArray("containers") groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0383489, 0, -0.23210406)
+containers = [NodePath("ItemContainer")]
+
+[node name="ItemContainer" parent="Room" instance=ExtResource("4_meyvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8392472, -0.7, -1.3411254)
+_key = &"sink"
+
+[node name="Item" parent="Room/ItemContainer" instance=ExtResource("4_xfdkg")]
+key = &"toothbrush"
+
+[node name="Room2" parent="." groups=["navigation_mesh_source_group"] instance=ExtResource("2_5dwm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1046534, 0, -0.24184656)
+
+[node name="Roommate" parent="." instance=ExtResource("3_5dwm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6877255, 0.10857713, 1.2728959)

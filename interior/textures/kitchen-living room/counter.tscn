@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://yyofr8lvn8lu"]
+
+[ext_resource type="Texture2D" uid="uid://duralxel0g0u6" path="res://interior/textures/kitchen-living room/counter.png" id="1_k5mff"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fduo0"]
+size = Vector3(1.5, 0.5, 0.3)
+
+[node name="Counter" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_k5mff")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fduo0")

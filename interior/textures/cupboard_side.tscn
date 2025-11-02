@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4kjurmn6u7kw"]
+
+[ext_resource type="Texture2D" uid="uid://3t0ywosuwqke" path="res://interior/textures/cupboard_side.png" id="1_1ya61"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwyl5"]
+size = Vector3(0.4, 0.5, 0.2)
+
+[node name="CupboardSide" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_1ya61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pwyl5")

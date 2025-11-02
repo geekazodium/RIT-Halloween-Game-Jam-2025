@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1kqjsph8na2h"
-path.s3tc="res://.godot/imported/wall_base.png-079d1d11313a92ed2c2824b4f1d6cee2.s3tc.ctex"
+uid="uid://duralxel0g0u6"
+path.s3tc="res://.godot/imported/counter.png-f64110593d651494a273daf952998e8c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://interior/textures/wall_base.png"
-dest_files=["res://.godot/imported/wall_base.png-079d1d11313a92ed2c2824b4f1d6cee2.s3tc.ctex"]
+source_file="res://interior/textures/kitchen-living room/counter.png"
+dest_files=["res://.godot/imported/counter.png-f64110593d651494a273daf952998e8c.s3tc.ctex"]
 
 [params]
 

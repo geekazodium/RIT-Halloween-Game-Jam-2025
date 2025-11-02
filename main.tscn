@@ -1,15 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://c26csylq2grx0"]
+[gd_scene load_steps=5 format=3 uid="uid://c26csylq2grx0"]
 
-[ext_resource type="PackedScene" uid="uid://bu21suu50eed5" path="res://rooms/room.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://32mfifkoibii" path="res://rooms/test_room.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ccimog3cst7y1" path="res://rooms/kitchen.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bluyjdwt83jur" path="res://player/player.tscn" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
+vertices = PackedVector3Array(-2.005, -0.50842476, -0.5050001, -1.7550001, -0.50842476, -0.5050001, -1.5050001, -0.50842476, -0.7550001, -2.005, -0.50842476, -2.005, -1.5050001, -0.50842476, 0.24499989, -2.255, -0.50842476, -0.5050001, -2.005, -0.50842476, 1.9949999, 2.245, -0.50842476, -0.5050001, -0.0050001144, -0.50842476, -0.7550001, 0.24499989, -0.50842476, -0.0050001144, -0.5050001, -0.50842476, -2.005, 2.995, -0.50842476, 0.4949999, 5.245, -0.50842476, -0.2550001, 2.495, -0.50842476, -0.2550001, 2.495, -0.50842476, 0.24499989, -0.5050001, -0.50842476, -2.255, 2.245, -0.50842476, -2.005, 2.245, -0.50842476, 0.4949999, -0.0050001144, -0.50842476, 0.24499989, 7.245, -0.50842476, -0.2550001, 5.245, -0.50842476, -0.5050001, 7.245, -0.50842476, 1.9949999, 7.495, -0.50842476, 1.7449999, 2.995, -0.50842476, 1.9949999, 2.245, -0.50842476, 1.9949999)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(0, 1, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(5, 4, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(8, 2, 10), PackedInt32Array(10, 2, 3), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(10, 15, 8), PackedInt32Array(8, 15, 16), PackedInt32Array(8, 16, 7), PackedInt32Array(14, 17, 13), PackedInt32Array(13, 17, 7), PackedInt32Array(7, 17, 9), PackedInt32Array(9, 17, 18), PackedInt32Array(12, 20, 19), PackedInt32Array(22, 21, 19), PackedInt32Array(19, 21, 12), PackedInt32Array(12, 21, 11), PackedInt32Array(11, 21, 23), PackedInt32Array(4, 18, 6), PackedInt32Array(6, 18, 17), PackedInt32Array(6, 17, 24)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 1
+geometry_source_geometry_mode = 1
+agent_height = 1.0
+agent_radius = 0.25
+edge_max_error = 0.75
 
 [node name="Node3D" type="Node3D"]
 
-[node name="TestRoom" parent="." instance=ExtResource("1_ig7tw")]
-size = Vector3(5, 2, 3)
-door1_active = true
-door2_active = true
-door3_active = true
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0xm2m")
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9298396, 0, 0.035468817)
+collision_mask = 1
+
+[node name="Room2" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5.0203156, 0, 0.75475895)
+ceiling_texture = SubResource("StandardMaterial3D_h2yge")
+
+[node name="Room" parent="." instance=ExtResource("3_1bvp3")]
+door1_offset = 0.0
+door2_offset = 0.0
+door3_offset = 0.0
