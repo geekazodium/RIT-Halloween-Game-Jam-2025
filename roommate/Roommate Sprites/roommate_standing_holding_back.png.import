@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq736ljv10i8s"
-path.s3tc="res://.godot/imported/roommate_standing_holding_back.png-fa2f3bedafac59718b36041ab57c3b30.s3tc.ctex"
+path="res://.godot/imported/roommate_standing_holding_back.png-fa2f3bedafac59718b36041ab57c3b30.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://roommate/Roommate Sprites/roommate_standing_holding_back.png"
-dest_files=["res://.godot/imported/roommate_standing_holding_back.png-fa2f3bedafac59718b36041ab57c3b30.s3tc.ctex"]
+dest_files=["res://.godot/imported/roommate_standing_holding_back.png-fa2f3bedafac59718b36041ab57c3b30.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

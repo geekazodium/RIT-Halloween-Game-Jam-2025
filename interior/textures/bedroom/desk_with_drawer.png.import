@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciojpd0fqk62p"
-path.s3tc="res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"
+path="res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/bedroom/desk_with_drawer.png"
-dest_files=["res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.s3tc.ctex"]
+dest_files=["res://.godot/imported/desk_with_drawer.png-62e9060e25349c8ffbc9b3f9e8fc9741.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

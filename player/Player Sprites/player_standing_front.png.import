@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rbdpao1anha3"
-path.s3tc="res://.godot/imported/player_standing_front.png-56afb4f771cd897ae709f89c9656c602.s3tc.ctex"
+path="res://.godot/imported/player_standing_front.png-56afb4f771cd897ae709f89c9656c602.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://player/Player Sprites/player_standing_front.png"
-dest_files=["res://.godot/imported/player_standing_front.png-56afb4f771cd897ae709f89c9656c602.s3tc.ctex"]
+dest_files=["res://.godot/imported/player_standing_front.png-56afb4f771cd897ae709f89c9656c602.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

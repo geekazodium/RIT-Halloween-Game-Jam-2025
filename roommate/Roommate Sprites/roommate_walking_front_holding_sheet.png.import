@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bywt28dlxn0xb"
-path.s3tc="res://.godot/imported/roommate_walking_front_holding_sheet.png-7bbf77eeda7b2f1d3fe9db98245a8324.s3tc.ctex"
+path="res://.godot/imported/roommate_walking_front_holding_sheet.png-7bbf77eeda7b2f1d3fe9db98245a8324.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://roommate/Roommate Sprites/roommate_walking_front_holding_sheet.png"
-dest_files=["res://.godot/imported/roommate_walking_front_holding_sheet.png-7bbf77eeda7b2f1d3fe9db98245a8324.s3tc.ctex"]
+dest_files=["res://.godot/imported/roommate_walking_front_holding_sheet.png-7bbf77eeda7b2f1d3fe9db98245a8324.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

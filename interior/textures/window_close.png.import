@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://15rfsv4guc56"
-path.s3tc="res://.godot/imported/window_close.png-ceb017c35c18e2284d36004be8115b32.s3tc.ctex"
+path="res://.godot/imported/window_close.png-ceb017c35c18e2284d36004be8115b32.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://interior/textures/window_close.png"
-dest_files=["res://.godot/imported/window_close.png-ceb017c35c18e2284d36004be8115b32.s3tc.ctex"]
+dest_files=["res://.godot/imported/window_close.png-ceb017c35c18e2284d36004be8115b32.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

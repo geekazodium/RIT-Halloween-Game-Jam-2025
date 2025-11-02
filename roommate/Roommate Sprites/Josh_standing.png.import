@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkd73sjn3o8sv"
-path.s3tc="res://.godot/imported/Josh_standing.png-87f7f6cf516858bbfb04bb29d270baba.s3tc.ctex"
+path="res://.godot/imported/Josh_standing.png-87f7f6cf516858bbfb04bb29d270baba.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://roommate/Roommate Sprites/Josh_standing.png"
-dest_files=["res://.godot/imported/Josh_standing.png-87f7f6cf516858bbfb04bb29d270baba.s3tc.ctex"]
+dest_files=["res://.godot/imported/Josh_standing.png-87f7f6cf516858bbfb04bb29d270baba.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
