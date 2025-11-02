@@ -48,7 +48,7 @@ var grab_item_timer: float = 0;
 
 func _init_next_task() -> void:
 	self._state = State.CheckRememberedItem;
-	self.grab_item_timer = self.search_container_timer;
+	self.grab_item_timer = 0;
 	if self.current_task != null:
 		self.give_up_time_left = self.current_task.seconds_until_give_up;
 
@@ -87,8 +87,8 @@ func _nav_to_last_remembered(delta: float) -> void:
 		return;
 	self.wish_dir.target = container;
 	if self.wish_dir.is_in_range:
-		if self.grab_item_timer > 0:
-			self.grab_item_timer -= delta;
+		if self.grab_item_timer < container.time_to_interact:
+			self.grab_item_timer += delta;
 			return;
 		var matches: bool = container.item_matches(item_key);
 		if matches:
@@ -175,6 +175,9 @@ func _search_current_room(delta: float) -> void:
 			if self.check_give_up():
 				return;
 		else:
+			if search_time_left > self.search_time_seconds - target.time_to_interact:
+				self.search_time_left -= delta;
+				return;
 			self.character_body.swap_item_with_container(target);
 			self._start_task();
 		self.search_time_left = self.search_time_seconds;
