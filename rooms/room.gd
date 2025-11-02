@@ -103,7 +103,7 @@ func resize():
 	faces[0].rotation = Vector3(0,PI/2,0)
 	faces[1].rotation = Vector3(PI/2,0,0)
 	faces[2].rotation = Vector3(-PI/2,0,0)
-	faces[3].rotation = Vector3(0,0,0)
+	faces[3].rotation = Vector3(0,PI,0)
 	faces[4].rotation = Vector3(0,0,0)
 	faces[5].rotation = Vector3(0,PI/2,0)
 	
@@ -131,7 +131,6 @@ func resize():
 	
 	faces[3].visible = true
 	collider_shape.shape = combiner.bake_collision_shape()
-	faces[3].visible = false
 	
 	if floor_texture != null:
 		faces[0].material = floor_texture
@@ -140,11 +139,21 @@ func resize():
 	if wall2_texture != null:
 		faces[2].material = wall2_texture
 	if wall3_texture != null:
+		faces[3].material = wall3_texture
+	if wall3_texture != null:
 		faces[4].material = wall3_texture
 	if ceiling_texture != null:
 		faces[5].material = ceiling_texture
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if camera != null:
+		faces[3].visible = false
 		camera.make_current()
-		_body.global_rotation = camera.global_rotation
+		_body.global_rotation.y = camera.global_rotation.y
+		
+
+
+func _on_area_3d_body_exited(_body: Node3D) -> void:
+	while(camera.current == true):
+		await get_tree().process_frame
+	faces[3].visible = true
