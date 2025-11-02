@@ -7,6 +7,9 @@ class_name PlayerDetectionRadius
 @export var suspicion_decay_per_second: float = .1;
 var suspicion: float = 0;
 @export var display_mesh: Node3D;
+const SUSPICIOUS_LAYER: int = 6;
+
+signal suspicious_player_detected(player: Player);
 
 var line_of_sight: RayCast3D:
 	get:
@@ -36,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	if !suspicious:
 		self.suspicion = max(self.suspicion - self.suspicion_decay_per_second * delta,0);
 
-const SUSPICIOUS_LAYER: int = 6;
 
 func _check_line_of_sight(body: PhysicsBody3D) -> bool:
 	if self.is_colliding_with_suspicious_body(body.global_position - Vector3.UP * .3):
@@ -51,6 +53,9 @@ func is_colliding_with_suspicious_body(global_pos: Vector3) -> bool:
 	var coll = self.line_of_sight.get_collider();
 	if coll is CollisionObject3D:
 		if coll.get_collision_layer_value(SUSPICIOUS_LAYER):
+			var player_coll: Player = coll as Player;
+			if player_coll != null: 
+				self.suspicious_player_detected.emit(player_coll);
 			return true;
 	return false;
 

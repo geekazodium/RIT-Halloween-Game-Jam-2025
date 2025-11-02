@@ -63,6 +63,10 @@ func _physics_process(delta: float) -> void:
 	if self.current_task == null:
 		self.wish_dir.target = RoommateGlobalRef.exit_target;
 		return;
+	if self.override_chase_player:
+		self.chase_player_time_left -= delta;
+		self.wish_dir.target = self.player_to_follow;
+		return;
 	match self._state:
 		State.CheckRememberedItem:
 			self._nav_to_last_remembered(delta);
@@ -189,3 +193,20 @@ func _go_to_target_container(delta: float) -> void:
 			self.character_body.swap_item_with_container(target_container);
 			self._init_next_task();
 			print("task done!");
+
+
+@export var chase_player_time: float = 1;
+var chase_player_time_left: float = 0;
+var player_to_follow: Player;
+
+var override_chase_player: bool:
+	get:
+		return chase_player_time_left > 0;
+
+func _on_suspicious_player_detected(player: Player) -> void:
+	if self.current_task == null || player.held_item == null:
+		return;
+	if player.held_item.key != self.current_task.item_needed:
+		return;
+	self.chase_player_time_left = self.chase_player_time;
+	self.player_to_follow = player;
