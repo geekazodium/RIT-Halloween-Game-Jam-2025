@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd4u73v2pqy30"]
+
+[ext_resource type="Texture2D" uid="uid://d03dmcpay1mrj" path="res://interior/textures/bedroom/player_bed.png" id="1_35il6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ydo1"]
+size = Vector3(2, 1, 1)
+
+[node name="PlayerBed" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1726402, 0, 0)
+shape = SubResource("BoxShape3D_7ydo1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_35il6")

@@ -38,6 +38,7 @@ size = Vector3(4.2, 1.2, 4.2)
 
 [node name="Room" instance=ExtResource("1_e6d45")]
 size = Vector3(5, 2, 5)
+reload = null
 door1_active = true
 door2_active = true
 door3_active = true
@@ -78,7 +79,6 @@ material = SubResource("StandardMaterial3D_rxrga")
 
 [node name="ceiling" parent="CSGCombiner3D" index="5"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0)
-visible = false
 size = Vector3(5, 0.01, 5)
 material = SubResource("StandardMaterial3D_hefk4")
 
