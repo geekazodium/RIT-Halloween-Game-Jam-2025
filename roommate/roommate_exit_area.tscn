@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://2m07tfhj630y" path="res://roommate/roommate_exit_area.gd" id="1_6hdq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kek77"]
-size = Vector3(1, 1.7711182, 0.5740967)
+size = Vector3(1, 1.771, 1)
 
 [node name="RoommateExitArea" type="Area3D"]
 collision_layer = 0
