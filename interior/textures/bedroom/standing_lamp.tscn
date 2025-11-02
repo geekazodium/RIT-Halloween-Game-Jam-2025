@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxableikmj2h"]
+
+[ext_resource type="Texture2D" uid="uid://dkkgr7v0208bf" path="res://interior/textures/bedroom/standing_lamp.png" id="1_kc1hc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcc26"]
+size = Vector3(0.6, 1.2, 0.3)
+
+[node name="StandingLamp" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fcc26")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("1_kc1hc")
