@@ -285,6 +285,7 @@ wish_dir = NodePath("../RoommateWishDir")
 character_body = NodePath("..")
 current_room_detector = NodePath("../CurrentRoomDetector")
 room_enter_detection_area = NodePath("../CurrentRoomDetector")
+chase_player_time = 3.5
 
 [node name="DropShadow" parent="." instance=ExtResource("16_fnlvw")]
 skeleton = NodePath("../CurrentRoomDetector")
