@@ -71,7 +71,12 @@ func _physics_process(delta: float) -> void:
 
 func swap_item_with_container(container: ItemContainer) -> void:
 	if self.held_item != null: $HeldItemSlot.remove_child(self.held_item);
+	if self.held_item:
+		held_item.scale = Vector3(1,1,1)
 	self.held_item = container.swap_item(self.held_item);
+	if self.held_item:
+		held_item.scale = Vector3(2,2,2)
+	
 	if self.held_item != null: 
 		$HeldItemSlot.add_child(self.held_item);
 		self.held_item.visible = true;
