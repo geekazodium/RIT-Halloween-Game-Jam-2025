@@ -51,9 +51,8 @@ func _physics_process(delta: float) -> void:
 	if bubble.visible:
 		bubble.get_child(0).global_position = bubble.global_position + Vector3(0,0,.01)
 		bubble.get_child(0).modulate.a = suspicion / MAX_SUS
-	print(suspicion)
 	if self.suspicion > MAX_SUS:
-		get_tree().change_scene_to_file("res://menu/menu.tscn") #change to lose screen "You've been caught!"
+		get_tree().change_scene_to_file("res://win-lose-screens/lose_screen.tscn") #change to lose screen 
 
 func _check_line_of_sight(body: PhysicsBody3D) -> bool:
 	if self.is_colliding_with_suspicious_body(body.global_position - Vector3.UP * .3):
