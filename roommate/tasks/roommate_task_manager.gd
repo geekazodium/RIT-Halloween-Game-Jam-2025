@@ -201,6 +201,8 @@ func _go_to_target_container(delta: float) -> void:
 			self.current_task_index += 1;
 			self.character_body.swap_item_with_container(target_container);
 			self._init_next_task();
+			if tasks.size() == 0:
+				get_tree().change_scene_to_file("res://win-lose-screens/lose_screen.tscn")
 			print("task done!");
 
 
