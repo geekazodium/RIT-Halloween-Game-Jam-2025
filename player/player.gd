@@ -60,11 +60,13 @@ func play_animation():
 	
 	sprite.play(animation)
 
-func _on_interaction_range_body_entered(body: Node3D) -> void:
-	print("Entered: " + body.get_class())
-	if body.is_class("ItemContainer"):
+func _on_interaction_range_area_entered(area: Area3D) -> void:
+	var body = area.get_parent()
+	if body is ItemContainer:
 		body.show_item()
 
-func _on_interaction_range_body_exited(body: Node3D) -> void:
-	if body.is_class("ItemContainer"):
+
+func _on_interaction_range_area_exited(area: Area3D) -> void:
+	var body = area.get_parent()
+	if body is ItemContainer:
 		body.hide_item()
