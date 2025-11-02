@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdbk86kxacst1"
-path.s3tc="res://.godot/imported/pumpkin.png-75744c3783b22cc1e15d31f5d72bbfa6.s3tc.ctex"
+uid="uid://bv0l3m75x7dpn"
+path.s3tc="res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://items/textures/pumpkin.png"
-dest_files=["res://.godot/imported/pumpkin.png-75744c3783b22cc1e15d31f5d72bbfa6.s3tc.ctex"]
+source_file="res://roommate/sus/speech_bubble_blank.png"
+dest_files=["res://.godot/imported/speech_bubble_blank.png-a11e68aad90e9aa9d6749296792811a1.s3tc.ctex"]
 
 [params]
 

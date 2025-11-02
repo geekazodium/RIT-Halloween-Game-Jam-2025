@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoommateTask" load_steps=2 format=3 uid="uid://logorpvdy864"]
+
+[ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="1_upp2w"]
+
+[resource]
+script = ExtResource("1_upp2w")
+item_needed = &"pumpkin"
+container_key = &"worktable"
+seconds_required = 5.0
+seconds_until_give_up = 35.0
+metadata/_custom_type_script = "uid://bsbux4pkc65tr"

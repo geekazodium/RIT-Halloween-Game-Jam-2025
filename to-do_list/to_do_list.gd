@@ -19,7 +19,7 @@ func _ready() -> void:
 		return
 	manager = manager.get_node("RoommateTaskManager")
 	
-	var task_dict = {"plate":wash_dishes, "trash":take_out_trash, "toothbrush":brush_teeth, "lunchbag":pack_lunch, "pumpkin":carve_pumpkin}
+	var task_dict = {"plate":wash_dishes, "trash":take_out_trash, "toothbrush":brush_teeth, "paperbag":pack_lunch, "pumpkin":carve_pumpkin}
 	
 	for task in manager.tasks:
 		var task_display = task_display_scene.instantiate();

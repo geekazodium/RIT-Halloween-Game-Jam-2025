@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdbk86kxacst1"
-path.s3tc="res://.godot/imported/pumpkin.png-75744c3783b22cc1e15d31f5d72bbfa6.s3tc.ctex"
+uid="uid://dwsx7w8lade0w"
+path.s3tc="res://.godot/imported/player_standing_holding_front.png-c429ec6e2d5f2ada7f0500a5fded7923.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://items/textures/pumpkin.png"
-dest_files=["res://.godot/imported/pumpkin.png-75744c3783b22cc1e15d31f5d72bbfa6.s3tc.ctex"]
+source_file="res://player/Player Sprites/player_standing_holding_front.png"
+dest_files=["res://.godot/imported/player_standing_holding_front.png-c429ec6e2d5f2ada7f0500a5fded7923.s3tc.ctex"]
 
 [params]
 
