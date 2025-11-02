@@ -11,6 +11,9 @@ var suspicion: float:
 @export var ideal_speed: float = 5;
 @export var input_force_strength: float = 10;
 
+@export var sprite: AnimatedSprite3D;
+var looking_forward: bool = false;
+
 var held_item: Item;
 
 func _get_ideal_speed() -> float:
@@ -18,3 +21,40 @@ func _get_ideal_speed() -> float:
 
 func _get_input_force_strength() -> float:
 	return self.input_force_strength;
+
+func _physics_process(delta: float) -> void:
+	var view = self.get_viewport();
+	if view != null:
+		var camera: Camera3D = view.get_camera_3d();
+		if camera != null:
+			self.global_rotation.y = camera.global_rotation.y;
+	super._physics_process(delta);
+	var direction_vec: Vector2 = self.movement_direction.get_input_xz().rotated(self.rotation.y);
+	direction_vec = direction_vec.normalized();
+	
+	if direction_vec.y > sin(PI/8):
+		looking_forward = true;
+	elif direction_vec.y < -sin(PI/8):
+		looking_forward = false;
+	
+	if direction_vec.x > sin(PI/8):
+		sprite.flip_h = true;
+	elif direction_vec.x < -sin(PI/8):
+		sprite.flip_h = false;
+	
+	var animation = ""
+	
+	if held_item != null:
+		animation = "holding_"
+	
+	if(direction_vec == Vector2.ZERO):
+		animation += "standing_"
+	else:
+		animation += "walking_"
+	
+	if(looking_forward):
+		animation += "front"
+	else: 
+		animation += "back"
+	
+	sprite.play(animation);

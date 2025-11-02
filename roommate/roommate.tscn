@@ -1,12 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=39 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
-[ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
 [ext_resource type="Script" uid="uid://cfb1i5pjg53b5" path="res://roommate/player_detection_radius.gd" id="3_cw58l"]
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
+[ext_resource type="Shader" uid="uid://c7ldgermgloyt" path="res://roommate/roommate_visibility_cone.gdshader" id="4_fnlvw"]
 [ext_resource type="Script" uid="uid://7powfstf3a7g" path="res://roommate/tasks/roommate_task_manager.gd" id="5_xhgch"]
 [ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="6_84skn"]
 [ext_resource type="Texture2D" uid="uid://cq736ljv10i8s" path="res://roommate/Roommate Sprites/roommate_standing_holding_back.png" id="7_0k75t"]
+[ext_resource type="Resource" uid="uid://bh6srx70633dx" path="res://roommate/tasks/brush_teeth.tres" id="7_f6468"]
 [ext_resource type="Texture2D" uid="uid://ctf0x6cofdpfr" path="res://roommate/Roommate Sprites/Josh_standing_holding_front.png" id="8_ujk3v"]
 [ext_resource type="Texture2D" uid="uid://cxdpuns4rhjcx" path="res://roommate/Roommate Sprites/roommate_walking_back_holding_sheet.png" id="9_fnlvw"]
 [ext_resource type="Texture2D" uid="uid://bywt28dlxn0xb" path="res://roommate/Roommate Sprites/roommate_walking_front_holding_sheet.png" id="10_mpwyi"]
@@ -18,20 +19,6 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_84skn"]
 height = 1.2
 radius = 0.25
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
-radius = 6.7559624
-
-[sub_resource type="Resource" id="Resource_f6468"]
-script = ExtResource("6_84skn")
-item_needed = &"toothbrush"
-container_key = &"sink"
-seconds_required = 5.0
-seconds_until_give_up = 20.0
-metadata/_custom_type_script = "uid://bsbux4pkc65tr"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
-size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3csr"]
 atlas = ExtResource("9_fnlvw")
@@ -200,10 +187,44 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ae4i6"]
+radius = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6468"]
+transparency = 4
+depth_draw_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(1, 0.02745098, 1, 0.1882353)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f6468"]
+material = SubResource("StandardMaterial3D_f6468")
+height = 0.001
+cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhfs1"]
+render_priority = 0
+shader = ExtResource("4_fnlvw")
+shader_parameter/albedo = Color(1, 0.02745098, 1, 0.1882353)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
+size = Vector3(0.5, 1, 0.5)
+
+[node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("sprite", "movement_direction")]
 collision_layer = 0
 script = ExtResource("1_f53c4")
-ideal_speed = 2.0
+ideal_speed = 1.0
+sprite = NodePath("AnimatedSprite3D")
 movement_direction = NodePath("RoommateWishDir")
 metadata/_custom_type_script = "uid://j8am2d5qhph7"
 
@@ -211,21 +232,38 @@ metadata/_custom_type_script = "uid://j8am2d5qhph7"
 path_desired_distance = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CylinderShape3D_84skn")
 
-[node name="PlaceHolderShape3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.30247992, 0, 0, 0, 0.73982984, 0, 0, 0, 1.9677868, 0, 0, 0)
-texture = ExtResource("2_a3oh8")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.075, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_f07u3")
+animation = &"holding_standing_back"
 
-[node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src")]
+[node name="PlayerDetection3D" type="Area3D" parent="." node_paths=PackedStringArray("direction_src", "display_mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08082914, 0)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("3_cw58l")
 direction_src = NodePath("..")
+display_mesh = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://cfb1i5pjg53b5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection3D"]
 shape = SubResource("SphereShape3D_ae4i6")
+
+[node name="SuspicionLineOfSight" type="RayCast3D" parent="PlayerDetection3D"]
+enabled = false
+collision_mask = 33
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDetection3D"]
+transform = Transform3D(8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, -0.55334723, 0)
+mesh = SubResource("CylinderMesh_f6468")
+surface_material_override/0 = SubResource("ShaderMaterial_yhfs1")
 
 [node name="RoommateWishDir" type="Node" parent="." node_paths=PackedStringArray("nav_agent", "current_position_node")]
 process_physics_priority = -1
@@ -237,7 +275,7 @@ metadata/_custom_type_script = "uid://dm05esq75t5ue"
 
 [node name="RoommateTaskManager" type="Node" parent="." node_paths=PackedStringArray("wish_dir", "character_body", "current_room_detector", "room_enter_detection_area")]
 script = ExtResource("5_xhgch")
-tasks = Array[ExtResource("6_84skn")]([SubResource("Resource_f6468")])
+tasks = Array[ExtResource("6_84skn")]([ExtResource("7_f6468")])
 wish_dir = NodePath("../RoommateWishDir")
 character_body = NodePath("..")
 current_room_detector = NodePath("../CurrentRoomDetector")
@@ -250,9 +288,3 @@ collision_mask = 64
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CurrentRoomDetector"]
 shape = SubResource("BoxShape3D_84skn")
 debug_color = Color(0.66625464, 0.3141251, 1, 0.41960785)
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.968, 0, 0, 0, 1.968, 0, 0, 0, 1.968, 0.0008043274, -0.012403309, -0.005384907)
-texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_f07u3")
-animation = &"holding_standing_back"
