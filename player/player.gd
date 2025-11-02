@@ -16,7 +16,6 @@ var held_item: Item = null
 var looking_forward = true
 
 func _process(_delta: float) -> void:
-	play_animation()
 	if Input.is_action_just_pressed("interact"):
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
@@ -36,6 +35,7 @@ func _process(_delta: float) -> void:
 					node.item = held_item
 					held_item = null
 					if node.item: print("Container now has: ", node.item.key)
+	play_animation()
 
 
 func play_animation():

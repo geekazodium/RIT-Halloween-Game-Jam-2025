@@ -164,7 +164,7 @@ func _search_current_room(delta: float) -> void:
 			if self.check_give_up():
 				return;
 		else:
-			target.take_item();
+			self.character_body.swap_item_with_container(target);
 			self._start_task();
 		self.search_time_left = self.search_time_seconds;
 #func _search_containers_for_item() -> void:
