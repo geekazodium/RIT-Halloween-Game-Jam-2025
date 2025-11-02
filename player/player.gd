@@ -1,6 +1,8 @@
 extends UMCharacterBody3D
 class_name Player
 
+var interact_time : float = 1
+
 @export var ideal_speed: float = 2;
 @export var input_force_strength: float = 10;
 @export var sprite: AnimatedSprite3D
@@ -20,21 +22,23 @@ func _process(_delta: float) -> void:
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
 			if node is ItemContainer:
-				if node.item != null and held_item == null:
-					# Take item
-					held_item = node.take_item()
-					if held_item: print("Player now has: ", held_item.key)
-					if held_item:
-						add_child(held_item) 
-						held_item.position = position
-						held_item.scale = Vector3(2,2,2)
-				elif held_item != null and node.item == null:
-					# Drop item into container
-					held_item.scale = Vector3(1,1,1)
-					remove_child(held_item)
-					node.item = held_item
-					held_item = null
-					if node.item: print("Container now has: ", node.item.key)
+				await get_tree().create_timer(interact_time).timeout
+				if Input.is_action_pressed("interact"):
+					if node.item != null and held_item == null:
+						# Take item
+						held_item = node.take_item()
+						if held_item: print("Player now has: ", held_item.key)
+						if held_item:
+							add_child(held_item) 
+							held_item.position = position
+							held_item.scale = Vector3(2,2,2)
+					elif held_item != null and node.item == null:
+						# Drop item into container
+						held_item.scale = Vector3(1,1,1)
+						remove_child(held_item)
+						node.item = held_item
+						held_item = null
+						if node.item: print("Container now has: ", node.item.key)
 	play_animation()
 
 
