@@ -5,7 +5,6 @@ class_name Player
 @export var input_force_strength: float = 10;
 @export var sprite: AnimatedSprite3D
 @export var wishDir: Node
-@export var area: Area3D
 
 func _get_ideal_speed() -> float:
 	return self.ideal_speed;
@@ -19,19 +18,25 @@ var looking_forward = true
 func _process(_delta: float) -> void:
 	play_animation()
 	if Input.is_action_just_pressed("interact"):
-		print("Player pressed interact s1")
-		for area in area.get_overlapping_areas():
-			print("node is in area overlap")
+		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
 			if node is ItemContainer:
-				print("Node is container s3")
-				if node.item != null and held_item == null: #if container has item/player doesnt
+				if node.item != null and held_item == null:
+					# Take item
 					held_item = node.take_item()
-					print("Player now has: ", held_item)
-				elif held_item != null: #if player has item/container doesnt
+					if held_item: print("Player now has: ", held_item.key)
+					if held_item:
+						add_child(held_item) 
+						held_item.position = position
+						held_item.scale = Vector3(2,2,2)
+				elif held_item != null and node.item == null:
+					# Drop item into container
+					held_item.scale = Vector3(1,1,1)
+					remove_child(held_item)
 					node.item = held_item
 					held_item = null
-					print("Container now has: ", node.item)
+					if node.item: print("Container now has: ", node.item.key)
+
 
 func play_animation():
 	var direction_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down");
@@ -50,8 +55,8 @@ func play_animation():
 	
 	if held_item != null:
 		animation = "holding_"
-		held_item.visible = true
-		held_item.global_position = global_position + Vector3(0,1,0)
+		var target_global = global_position + Vector3(0, 0.75, 0)
+		held_item.set_deferred("global_position", target_global);
 	
 	if(direction_vec == Vector2.ZERO):
 		animation += "standing_"
@@ -62,7 +67,6 @@ func play_animation():
 		animation += "front"
 	else: 
 		animation += "back"
-	print(held_item)
 	sprite.play(animation)
 
 func _on_interaction_range_area_entered(area: Area3D) -> void:
