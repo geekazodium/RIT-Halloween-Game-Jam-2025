@@ -2,11 +2,12 @@ extends Node
 class_name RoommateTaskManager
 
 @export var tasks: Array[RoommateTask];
+var current_task_index: int = 0;
 var current_task: RoommateTask:
 	get:
-		if tasks.size() == 0:
+		if self.current_task_index >= self.tasks.size():
 			return null;
-		return tasks[0];
+		return tasks[self.current_task_index];
 
 @export var wish_dir: RoommateWishDir;
 
@@ -23,6 +24,8 @@ var target_room: Room:
 			self._init_room_search_order();
 		return rooms_to_check[0];
 
+@export var search_container_timer: float = 2;
+
 var current_room_to_check: Room = null;
 var give_up_time_left: float;
 
@@ -35,8 +38,17 @@ enum State{
 	GoToTargetContainer
 }
 
+## note: I rewrote this to use an index instead of popping the front element,
+## in theory, you now have a one-to-one relation between tasks in the array and
+## a list instantiated in the corresponding order since the task list is never added
+## or removed from.
+signal task_status_updated(index: int, status: RoommateTask.TaskStatus);
+
+var grab_item_timer: float = 0;
+
 func _init_next_task() -> void:
 	self._state = State.CheckRememberedItem;
+	self.grab_item_timer = self.search_container_timer;
 	if self.current_task != null:
 		self.give_up_time_left = self.current_task.seconds_until_give_up;
 
@@ -53,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		return;
 	match self._state:
 		State.CheckRememberedItem:
-			self._nav_to_last_remembered();
+			self._nav_to_last_remembered(delta);
 		State.SearchForItemSearchRoom:
 			self.give_up_time_left -= delta;
 			self._search_current_room(delta);
@@ -63,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		State.GoToTargetContainer:
 			self._go_to_target_container(delta);
 
-func _nav_to_last_remembered() -> void:
+func _nav_to_last_remembered(delta: float) -> void:
 	var item_key: StringName = self.current_task.item_needed;
 	var container: ItemContainer = WorldRooms.initial_item_locations.get(item_key);
 	if container == null:
@@ -72,6 +84,9 @@ func _nav_to_last_remembered() -> void:
 		return;
 	self.wish_dir.target = container;
 	if self.wish_dir.is_in_range:
+		if self.grab_item_timer > 0:
+			self.grab_item_timer -= delta;
+			return;
 		var matches: bool = container.item_matches(item_key);
 		if matches:
 			self.character_body.held_item = container.take_item();
@@ -95,7 +110,9 @@ func _init_room_search_order() -> void:
 func check_give_up() -> bool:
 	if self.give_up_time_left < 0:
 		print("gave up");
-		self.tasks.pop_front();
+		self.current_task.status = RoommateTask.TaskStatus.GAVE_UP;
+		self.task_status_updated.emit(self.current_task_index, self.current_task.status);
+		self.current_task_index += 1;
 		self._init_next_task();
 		return true;
 	return false;
@@ -165,6 +182,8 @@ func _go_to_target_container(delta: float) -> void:
 	if self.wish_dir.is_in_range:
 		self.task_time_left -= delta;
 		if self.task_time_left <= 0:
-			self.tasks.pop_front();
+			self.current_task.status = RoommateTask.TaskStatus.COMPLETE;
+			self.task_status_updated.emit(self.current_task_index, self.current_task.status);
+			self.current_task_index += 1;
 			self._init_next_task();
 			print("task done!");
