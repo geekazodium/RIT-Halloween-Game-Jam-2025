@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 					print("Container now has: ", node.item)
 
 func play_animation():
-	var direction_vec = wishDir.direction_vec
+	var direction_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down");
 	
 	if sign(direction_vec.y) == 1:
 		looking_forward = true

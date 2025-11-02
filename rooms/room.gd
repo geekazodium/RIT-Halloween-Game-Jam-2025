@@ -155,5 +155,6 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 
 func _on_area_3d_body_exited(_body: Node3D) -> void:
 	while(camera.current == true):
-		await get_tree().process_frame
+		if self.is_inside_tree():
+			await get_tree().process_frame
 	faces[3].visible = true
