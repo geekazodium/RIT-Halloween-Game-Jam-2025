@@ -22,6 +22,7 @@ var faces : Array
 @export var wall1_texture : Material
 @export var wall2_texture : Material
 @export var wall3_texture : Material
+@export var ceiling_texture : Material
 
 @onready var collider_shape : CollisionShape3D = $StaticBody3D/CollisionShape3D
 @onready var combiner :CSGCombiner3D = $CSGCombiner3D
@@ -42,12 +43,13 @@ func _exit_tree() -> void:
 	WorldRooms.room_exit_tree(self);
 
 func _ready() -> void:
-		faces.resize(5)
+		faces.resize(6)
 		faces[0] = $CSGCombiner3D/floor
 		faces[1] = $CSGCombiner3D/wall1
 		faces[2] = $CSGCombiner3D/wall2
 		faces[3] = $CSGCombiner3D/wall3
 		faces[4] = $CSGCombiner3D/wall4
+		faces[5] = $CSGCombiner3D/ceiling
 		doors.resize(3)
 		doors[0] = $CSGCombiner3D/door1
 		doors[1] = $CSGCombiner3D/door2
@@ -81,19 +83,22 @@ func resize():
 	faces[1].position = Vector3(size.x/2,0,0)
 	faces[2].position = Vector3(-size.x/2,0,0)
 	faces[3].position = Vector3(0,0,size.z/2)
-	faces[4].position = Vector3(0,0,-size.z/2)
+	faces[4].position = Vector3(0,0,-size.z/2) 
+	faces[5].position = Vector3(0,size.y/2,0)
 	
 	faces[0].size = Vector3(size.z, 0.01, size.x)
 	faces[1].size = Vector3(0.01, size.z, size.y)
 	faces[2].size = Vector3(0.01, size.z, size.y)
 	faces[3].size = Vector3(size.x, size.y, 0.01)
 	faces[4].size = Vector3(size.x, size.y, 0.01)
+	faces[5].size = Vector3(size.z, 0.01, size.x)
 	
 	faces[0].rotation = Vector3(0,PI/2,0)
 	faces[1].rotation = Vector3(PI/2,0,0)
 	faces[2].rotation = Vector3(-PI/2,0,0)
 	faces[3].rotation = Vector3(0,0,0)
 	faces[4].rotation = Vector3(0,0,0)
+	faces[5].rotation = Vector3(0,PI/2,0)
 	
 	if door1_active:
 		doors[0].position = Vector3(-size.x/2, (1.5-size.y)/2+0.005, door1_offset)
@@ -129,6 +134,8 @@ func resize():
 		faces[2].material = wall2_texture
 	if wall3_texture != null:
 		faces[4].material = wall3_texture
+	if ceiling_texture != null:
+		faces[5].material = ceiling_texture
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	if camera != null:
