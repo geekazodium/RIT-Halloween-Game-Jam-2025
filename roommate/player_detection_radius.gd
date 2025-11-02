@@ -7,6 +7,8 @@ class_name PlayerDetectionRadius
 @export var suspicion_decay_per_second: float = .1;
 var suspicion: float = 0;
 @export var display_mesh: Node3D;
+@export var bubble: Sprite3D
+@onready var mat = bubble.get_child(0).material_override
 
 var line_of_sight: RayCast3D:
 	get:
@@ -18,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	var dot_prod_tolerance: float = cos(self.vision_angle_range);
 	
 	var suspicious: bool = false;
-	
+	var bubble = get_node("../Bubble")
 	for body:PhysicsBody3D in self.get_overlapping_bodies():
 		## uncomment when player type exists
 		#if !body is player: return;
@@ -33,8 +35,19 @@ func _physics_process(delta: float) -> void:
 		
 		self.suspicion += self._get_suspicion_per_second(body as CharacterBody3D) * delta;
 		suspicious = true;
+		
 	if !suspicious:
 		self.suspicion = max(self.suspicion - self.suspicion_decay_per_second * delta,0);
+		bubble.visible = false
+	
+	const MAX_SUS = 3
+	bubble.visible = self.suspicion > 0
+	if bubble.visible:
+		bubble.get_child(0).global_position = bubble.global_position + Vector3(0,0,.01)
+		bubble.get_child(0).modulate.a = suspicion / MAX_SUS
+	print(suspicion)
+	if self.suspicion > MAX_SUS:
+		get_tree().change_scene_to_file("res://menu/menu.tscn") #change to lose screen "You've been caught!"
 
 const SUSPICIOUS_LAYER: int = 6;
 
