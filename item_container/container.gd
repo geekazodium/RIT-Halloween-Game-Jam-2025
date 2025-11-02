@@ -17,12 +17,12 @@ var item: Item = null:
 	set(value):
 		if (self.item == null) == (value == null):
 			return;
-		item = value;
 		if item != null:
 			for c in self.item_holder.get_children():
 				c.queue_free();
 		else:
 			self.move_to_item_holder.call_deferred(value);
+		item = value;
 
 var item_holder: Node3D:
 	get: 
@@ -37,3 +37,10 @@ func item_matches(item_key: StringName) -> bool:
 	if self.item == null:
 		return false;
 	return self.item.key == item_key;
+
+func take_item() -> Item:
+	if self.item == null:
+		return null;
+	var taken: Item = self.item;
+	self.item = null;
+	return taken;
