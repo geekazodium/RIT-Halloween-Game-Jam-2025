@@ -29,6 +29,7 @@ texture = ExtResource("2_rd7dy")
 stretch_mode = 2
 
 [node name="Resume" type="Button" parent="."]
+process_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 470.0
@@ -38,6 +39,7 @@ offset_bottom = 354.0
 text = "Resume"
 
 [node name="Quit" type="Button" parent="."]
+process_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 483.0
