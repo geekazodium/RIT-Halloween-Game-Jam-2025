@@ -24,6 +24,11 @@ var faces : Array
 @export var wall3_texture : Material
 @export var ceiling_texture : Material
 
+var bounding_box: Area3D:
+	get:
+		## refactor later
+		return $Area3D;
+
 @onready var collider_shape : CollisionShape3D = $StaticBody3D/CollisionShape3D
 @onready var combiner :CSGCombiner3D = $CSGCombiner3D
 var camera : Camera3D
