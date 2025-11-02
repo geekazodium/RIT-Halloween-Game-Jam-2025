@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtemgex73y6nh"]
+
+[ext_resource type="Texture2D" uid="uid://c614evxtp3elb" path="res://pause_menu/textures/unchecked.png" id="1_7o5yo"]
+[ext_resource type="Texture2D" uid="uid://wk20mabt6j70" path="res://to-do_list/textures/to_do_brush_teeth.png" id="2_65ns3"]
+
+[node name="TaskDisplay" type="HBoxContainer"]
+theme_override_constants/separation = -5
+
+[node name="Checkbox" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_7o5yo")
+expand_mode = 2
+
+[node name="TaskText" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_65ns3")
