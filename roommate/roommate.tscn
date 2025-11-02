@@ -231,7 +231,7 @@ movement_direction = NodePath("RoommateWishDir")
 metadata/_custom_type_script = "uid://j8am2d5qhph7"
 
 [node name="HeldItemSlot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6124924, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.25
