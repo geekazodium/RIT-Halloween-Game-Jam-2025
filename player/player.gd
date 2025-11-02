@@ -9,7 +9,17 @@ var interact_time : float = 1
 @export var sprite: AnimatedSprite3D
 @export var wishDir: Node
 
+var interaction_timer: SceneTreeTimer;
+var interacting: bool:
+	get:
+		if interaction_timer == null:
+			return false;
+		if interaction_timer.time_left <= 0:
+			interaction_timer = null;
+		return interaction_timer != null;
+
 func _get_ideal_speed() -> float:
+	if self.interacting: return 0;
 	return self.ideal_speed;
 
 func _get_input_force_strength() -> float:
@@ -25,13 +35,16 @@ func _process(_delta: float) -> void:
 	else:
 		collision_layer = 2
 	
-	if Input.is_action_just_pressed("interact"):
+	if self.held_item != null:
+		self.held_item.visible = true;
+	
+	if Input.is_action_just_pressed("interact") && !self.interacting:
 		for area in $InteractionRange.get_overlapping_areas():
 			var node = area.get_parent()
 			if node is ItemContainer:
 				interact_sound_player.play(randf_range(5.0,30.0))
-				await get_tree().create_timer(interact_time).timeout
-				interact_sound_player.stop()
+				self.interaction_timer = get_tree().create_timer(node.time_to_interact);
+				await self.interaction_timer.timeout;
 				if Input.is_action_pressed("interact"):
 					if node.item != null and held_item == null:
 						# Take item
@@ -49,9 +62,10 @@ func _process(_delta: float) -> void:
 						held_item = null
 						if node.item: print("Container now has: ", node.item.key)
 	if Input.is_action_just_released("interact"):
+		self.interacting = false;
+		self.interaction_timer = null;
 		interact_sound_player.stop()
-	play_animation()
-
+	play_animation();
 
 func play_animation():
 	var direction_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down");

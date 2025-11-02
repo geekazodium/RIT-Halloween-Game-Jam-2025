@@ -2,6 +2,7 @@ extends Node3D
 class_name ItemContainer
 
 @export var _key: StringName = "";
+@export var time_to_interact: float = 3;
 ## readonly key
 var key:
 	get:
