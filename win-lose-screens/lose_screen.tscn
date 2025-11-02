@@ -22,8 +22,18 @@ texture = ExtResource("1_2nexd")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+<<<<<<< HEAD
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 693.0
+offset_right = 230.0
+offset_bottom = 716.0
+text = "Press space bar to continue.."
+=======
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ycusm")
 autoplay = true
+>>>>>>> f9b11faa54b51f574c5ac84759b5bb3e22b199c7
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
