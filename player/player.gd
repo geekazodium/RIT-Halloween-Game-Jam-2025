@@ -66,6 +66,7 @@ func _process(_delta: float) -> void:
 						node.item = held_item
 						held_item = null
 						if node.item: print("Container now has: ", node.item.key)
+				break;
 	if Input.is_action_just_released("interact"):
 		self.interacting = false;
 		self.interaction_timer = null;
