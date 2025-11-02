@@ -4,7 +4,7 @@ extends Control
 @export var vertical_container: VBoxContainer
 
 @onready var task_display_scene = preload("res://to-do_list/task_display.tscn")
-@onready var manager = get_node(roommate_node_path).get_node("RoommateTaskManager");
+@onready var manager = get_node(roommate_node_path);
 @onready var wash_dishes = load("res://to-do_list/textures/to_do_wash_dishes.png")
 @onready var take_out_trash = load("res://to-do_list/textures/to_do_toss_trash.png")
 @onready var brush_teeth = load("res://to-do_list/textures/to_do_brush_teeth.png")
@@ -12,6 +12,10 @@ extends Control
 @onready var carve_pumpkin = load("res://to-do_list/textures/to_do_carve_pumpkin.png")
 
 func _ready() -> void:
+	if manager == null: 
+		return
+	manager = manager.get_node("RoommateTaskManager")
+	
 	var task_dict = {"plate":wash_dishes, "trash":take_out_trash, "toothbrush":brush_teeth, "lunchbag":pack_lunch, "pumpkin":carve_pumpkin}
 	
 	for task in manager.tasks:
