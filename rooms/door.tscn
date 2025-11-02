@@ -1,13 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://d210d8pf5ug2j"]
 
-[ext_resource type="Script" uid="uid://dqp1lw1xneok7" path="res://rooms/door.gd" id="1_7qc5k"]
+[sub_resource type="GDScript" id="GDScript_rjirw"]
+script/source = "extends Area3D
+
+@export var room_1 : Room
+@export var room_2 : Room
+
+func _on_body_entered(body: Node3D) -> void:
+	if room_1.camera.current:
+		room_2.camera.make_current()
+	else:
+		room_1.camera.make_current()
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mv7pb"]
 size = Vector3(1, 2, 0.2)
 
 [node name="Door" type="Area3D"]
 collision_mask = 2
-script = ExtResource("1_7qc5k")
+script = SubResource("GDScript_rjirw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_mv7pb")

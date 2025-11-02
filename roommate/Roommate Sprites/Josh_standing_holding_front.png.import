@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccaoo5hecci3o"
-path.s3tc="res://.godot/imported/bathtub_showercurtain.png-5048df12ed057706fdec5648c8388b52.s3tc.ctex"
+uid="uid://ctf0x6cofdpfr"
+path.s3tc="res://.godot/imported/Josh_standing_holding_front.png-e8ff55632a9c288709a68488e709b15a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://interior/textures/Bathroom/bathtub_showercurtain.png"
-dest_files=["res://.godot/imported/bathtub_showercurtain.png-5048df12ed057706fdec5648c8388b52.s3tc.ctex"]
+source_file="res://roommate/Roommate Sprites/Josh_standing_holding_front.png"
+dest_files=["res://.godot/imported/Josh_standing_holding_front.png-e8ff55632a9c288709a68488e709b15a.s3tc.ctex"]
 
 [params]
 

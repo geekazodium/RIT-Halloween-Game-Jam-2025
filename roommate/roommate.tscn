@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpfcifw7tvbxx"]
+[gd_scene load_steps=36 format=3 uid="uid://bpfcifw7tvbxx"]
 
 [ext_resource type="Script" uid="uid://j8am2d5qhph7" path="res://roommate/roommate_character_body.gd" id="1_f53c4"]
 [ext_resource type="Texture2D" uid="uid://srsqval8jr1l" path="res://icon.svg" id="2_a3oh8"]
@@ -6,6 +6,14 @@
 [ext_resource type="Script" uid="uid://dm05esq75t5ue" path="res://roommate/roommate_wish_dir.gd" id="4_a3oh8"]
 [ext_resource type="Script" uid="uid://7powfstf3a7g" path="res://roommate/tasks/roommate_task_manager.gd" id="5_xhgch"]
 [ext_resource type="Script" uid="uid://bsbux4pkc65tr" path="res://roommate/tasks/roommate_task.gd" id="6_84skn"]
+[ext_resource type="Texture2D" uid="uid://cq736ljv10i8s" path="res://roommate/Roommate Sprites/roommate_standing_holding_back.png" id="7_0k75t"]
+[ext_resource type="Texture2D" uid="uid://ctf0x6cofdpfr" path="res://roommate/Roommate Sprites/Josh_standing_holding_front.png" id="8_ujk3v"]
+[ext_resource type="Texture2D" uid="uid://cxdpuns4rhjcx" path="res://roommate/Roommate Sprites/roommate_walking_back_holding_sheet.png" id="9_fnlvw"]
+[ext_resource type="Texture2D" uid="uid://bywt28dlxn0xb" path="res://roommate/Roommate Sprites/roommate_walking_front_holding_sheet.png" id="10_mpwyi"]
+[ext_resource type="Texture2D" uid="uid://bh4r7hdf8th3i" path="res://roommate/Roommate Sprites/roommate_standing_back.png" id="11_14he8"]
+[ext_resource type="Texture2D" uid="uid://bkd73sjn3o8sv" path="res://roommate/Roommate Sprites/Josh_standing.png" id="12_lkxmg"]
+[ext_resource type="Texture2D" uid="uid://cbnbjs3ux6t7f" path="res://roommate/Roommate Sprites/roommate_walking_back_sheet.png" id="13_tfr46"]
+[ext_resource type="Texture2D" uid="uid://qpid7cfqmcoq" path="res://roommate/Roommate Sprites/roommate_walking_front_sheet.png" id="14_5kyui"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_84skn"]
 height = 1.2
@@ -22,6 +30,173 @@ metadata/_custom_type_script = "uid://bsbux4pkc65tr"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84skn"]
 size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3csr"]
+atlas = ExtResource("9_fnlvw")
+region = Rect2(0, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjtp2"]
+atlas = ExtResource("9_fnlvw")
+region = Rect2(47, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54od8"]
+atlas = ExtResource("9_fnlvw")
+region = Rect2(94, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm7lh"]
+atlas = ExtResource("9_fnlvw")
+region = Rect2(141, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3keq"]
+atlas = ExtResource("10_mpwyi")
+region = Rect2(0, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8hm6"]
+atlas = ExtResource("10_mpwyi")
+region = Rect2(47, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grok8"]
+atlas = ExtResource("10_mpwyi")
+region = Rect2(94, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ulh"]
+atlas = ExtResource("10_mpwyi")
+region = Rect2(141, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sagiw"]
+atlas = ExtResource("13_tfr46")
+region = Rect2(0, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wirbw"]
+atlas = ExtResource("13_tfr46")
+region = Rect2(47, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5fb4"]
+atlas = ExtResource("13_tfr46")
+region = Rect2(94, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au0ho"]
+atlas = ExtResource("13_tfr46")
+region = Rect2(141, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0nx6"]
+atlas = ExtResource("14_5kyui")
+region = Rect2(0, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbje"]
+atlas = ExtResource("14_5kyui")
+region = Rect2(47, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhy7p"]
+atlas = ExtResource("14_5kyui")
+region = Rect2(94, 0, 47, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uxdn"]
+atlas = ExtResource("14_5kyui")
+region = Rect2(141, 0, 47, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f07u3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0k75t")
+}],
+"loop": true,
+"name": &"holding_standing_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ujk3v")
+}],
+"loop": true,
+"name": &"holding_standing_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3csr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjtp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54od8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm7lh")
+}],
+"loop": true,
+"name": &"holding_walking_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3keq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8hm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grok8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4ulh")
+}],
+"loop": true,
+"name": &"holding_walking_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_14he8")
+}],
+"loop": true,
+"name": &"standing_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_lkxmg")
+}],
+"loop": true,
+"name": &"standing_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sagiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wirbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5fb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au0ho")
+}],
+"loop": true,
+"name": &"walking_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0nx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhy7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uxdn")
+}],
+"loop": true,
+"name": &"walking_front",
+"speed": 5.0
+}]
 
 [node name="Roommate" type="CharacterBody3D" node_paths=PackedStringArray("movement_direction")]
 collision_layer = 0
@@ -69,3 +244,9 @@ room_enter_detection_area = NodePath("../CurrentRoomDetector")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CurrentRoomDetector"]
 shape = SubResource("BoxShape3D_84skn")
 debug_color = Color(0.66625464, 0.3141251, 1, 0.41960785)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.968, 0, 0, 0, 1.968, 0, 0, 0, 1.968, 0.0008043274, -0.012403309, -0.005384907)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_f07u3")
+animation = &"holding_standing_back"
