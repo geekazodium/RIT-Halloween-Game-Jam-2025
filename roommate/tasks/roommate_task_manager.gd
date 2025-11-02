@@ -2,11 +2,12 @@ extends Node
 class_name RoommateTaskManager
 
 @export var tasks: Array[RoommateTask];
+var current_task_index: int = 0;
 var current_task: RoommateTask:
 	get:
-		if tasks.size() == 0:
+		if self.current_task_index >= self.tasks.size():
 			return null;
-		return tasks[0];
+		return tasks[self.current_task_index];
 
 @export var wish_dir: RoommateWishDir;
 
@@ -34,6 +35,12 @@ enum State{
 	SearchForItemSearchRoom,
 	GoToTargetContainer
 }
+
+## note: I rewrote this to use an index instead of popping the front element,
+## in theory, you now have a one-to-one relation between tasks in the array and
+## a list instantiated in the corresponding order since the task list is never added
+## or removed from.
+signal task_status_updated(index: int, status: RoommateTask.TaskStatus);
 
 func _init_next_task() -> void:
 	self._state = State.CheckRememberedItem;
@@ -95,7 +102,9 @@ func _init_room_search_order() -> void:
 func check_give_up() -> bool:
 	if self.give_up_time_left < 0:
 		print("gave up");
-		self.tasks.pop_front();
+		self.current_task.status = RoommateTask.TaskStatus.GAVE_UP;
+		self.task_status_updated.emit(self.current_task_index, self.current_task.status);
+		self.current_task_index += 1;
 		self._init_next_task();
 		return true;
 	return false;
@@ -165,6 +174,8 @@ func _go_to_target_container(delta: float) -> void:
 	if self.wish_dir.is_in_range:
 		self.task_time_left -= delta;
 		if self.task_time_left <= 0:
-			self.tasks.pop_front();
+			self.current_task.status = RoommateTask.TaskStatus.COMPLETE;
+			self.task_status_updated.emit(self.current_task_index, self.current_task.status);
+			self.current_task_index += 1;
 			self._init_next_task();
 			print("task done!");
