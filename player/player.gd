@@ -26,6 +26,7 @@ func _get_input_force_strength() -> float:
 	return self.input_force_strength;
 
 var held_item: Item = null
+var interacting_container: ItemContainer = null;
 var looking_forward = true
 
 func _process(_delta: float) -> void:
@@ -44,34 +45,44 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact") && !self.interacting:
 		var areas:Array[Area3D] = $InteractionRange.get_overlapping_areas();
-		if areas.size() >0:
-			var area:Area3D = areas[0];
-			var node = area.get_parent()
+		if areas.size() > 0:
+			areas.sort_custom(
+				func (a: Area3D, b: Area3D):
+					return a.global_position.distance_squared_to(self.global_position) < \
+					b.global_position.distance_squared_to(self.global_position);
+			)
+			var area: Area3D = areas[0];
+			var node = area.get_parent();
 			if node is ItemContainer:
-				interact_sound_player.play(randf_range(5.0,30.0))
-				$CanvasLayer/Control/ProgressBar.max_value = node.time_to_interact;
-				self.interaction_timer = get_tree().create_timer(node.time_to_interact);
-				await self.interaction_timer.timeout;
-				if Input.is_action_pressed("interact"):
-					if node.item != null and held_item == null:
-						# Take item
-						held_item = node.take_item()
-						if held_item: print("Player now has: ", held_item.key)
-						if held_item:
-							add_child(held_item) 
-							held_item.position = position
-							held_item.scale = Vector3(2,2,2)
-					elif held_item != null and node.item == null:
-						# Drop item into container
-						held_item.scale = Vector3(1,1,1)
-						remove_child(held_item)
-						node.item = held_item
-						held_item = null
-						if node.item: print("Container now has: ", node.item.key)
+				if node.item != null || self.held_item != null:
+					self.interacting_container = node;
+					interact_sound_player.play(randf_range(5.0,30.0))
+					$CanvasLayer/Control/ProgressBar.max_value = node.time_to_interact;
+					self.interaction_timer = get_tree().create_timer(node.time_to_interact);
+	if Input.is_action_pressed("interact") && self.interacting_container != null:
+		if self.interacting_container.item != null || self.held_item != null:
+			if !self.interacting:
+				self.interaction_timer = null;
+				if self.held_item != null:
+					self.remove_child(held_item);
+					self.held_item.scale = Vector3(1,1,1)
+				self.held_item = self.interacting_container.swap_item(self.held_item);
+				if self.held_item != null:
+					add_child(held_item) 
+					held_item.position = position;
+					held_item.scale = Vector3(2,2,2)
+				
+				self.interacting_container = null;
+				interact_sound_player.stop();
+		else:
+			interact_sound_player.stop();
+			self.interacting_container = null;
+			self.interaction_timer = null;
 	if Input.is_action_just_released("interact"):
 		self.interacting = false;
+		self.interacting_container = null;
 		self.interaction_timer = null;
-		interact_sound_player.stop()
+		interact_sound_player.stop();
 	play_animation();
 
 func play_animation():

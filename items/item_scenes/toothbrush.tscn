@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ch70tpwg24nrp" path="res://items/textures/toothbrush.png" id="2_kml6p"]
 
 [node name="Toothbrush" instance=ExtResource("1_knrp2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 key = &"toothbrush"
 suspicious_val = 1
 
