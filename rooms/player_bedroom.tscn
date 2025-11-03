@@ -110,6 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328, -0.5, -1)
 
 [node name="ItemContainer" parent="." index="5" instance=ExtResource("6_31ba2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.448422, -0.7137413, 0.22036839)
+time_to_interact = 1.0
 
 [node name="CeilingLight" parent="." index="6" instance=ExtResource("8_su6xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17702806, 0.77760726, 0.12123752)

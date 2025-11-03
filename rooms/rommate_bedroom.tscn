@@ -118,6 +118,7 @@ transform = Transform3D(0.014416244, -1.999948, 8.74205e-08, 0, -8.742278e-08, -
 [node name="ItemContainer" parent="." index="6" instance=ExtResource("7_4kpql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3923575, -0.7049999, -1.276477)
 _key = &"worktable"
+time_to_interact = 1.0
 
 [node name="Window" parent="." index="7" instance=ExtResource("9_4kpql")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.99, -0.145, 0)

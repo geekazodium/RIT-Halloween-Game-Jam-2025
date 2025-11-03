@@ -214,6 +214,7 @@ var player_to_follow: Player;
 @onready var chasing_sound_player : AudioStreamPlayer = $chasing_sound
 
 var last_player_suspicion_position: Vector3;
+var track_item: bool = false;
 
 var override_chase_player: bool:
 	get:
@@ -227,8 +228,7 @@ func _is_holding_current_task_item(player: Player) -> bool:
 	return true
 
 func _on_suspicious_player_detected(player: Player) -> void:
-	if !self._is_holding_current_task_item(player):
-		return;
+	self.track_item = self.track_item || self._is_holding_current_task_item(player);
 	if not self.override_chase_player:
 		chasing_sound_player.play()
 	self.chase_player_time_left = self.chase_player_time;
@@ -239,6 +239,12 @@ var memory_location: Node3D;
 func _chase_player(delta: float) -> void:
 	self.chase_player_time_left -= delta;
 	if !self.override_chase_player:
+		if !self.track_item:
+			self.current_room_to_check = null;
+			self.memory_location = null;
+			self._check_interrupt_traversal_with_this_room();
+			return;
+		self.track_item = false;
 		## executes on first iter where it was chasing player but then isnt
 		if self.memory_location == null:
 			self.memory_location = Node3D.new();

@@ -21,9 +21,11 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
+uniform float angle_tolarance : hint_range(0.0, 180.0, 0.1);
+
 void vertex() {
 	float a = dot(normalize(VERTEX), vec3(1,0,0));
-	if (a < cos(PI/4.)){
+	if (a < cos(PI/180. * angle_tolarance)){
 		VERTEX = vec3(0,0,0);
 	}
 	UV = UV * uv1_scale.xy + uv1_offset.xy;

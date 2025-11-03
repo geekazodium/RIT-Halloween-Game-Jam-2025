@@ -18,6 +18,9 @@ var has_all_roommates_exited: bool:
 func set_global_exit_target(target: Node3D) -> void:
 	self._exit_target = target;
 
+func get_roommate() -> RoommateCharacterBody:
+	return self._roommate;
+
 func add_roommate(roommate: RoommateCharacterBody) -> void:
 	self._roommate = roommate;
 	self._roommate_time_spent = 0;
@@ -29,10 +32,14 @@ func roommate_leave(roommate: RoommateCharacterBody) -> void:
 	
 	var time_diff: float = self._roommate_time_spent - roommate.seconds_until_late;
 	
+	print("time diff:", time_diff);
 	self.all_roommates_left.emit(max(time_diff,0));
 
 func get_roommate_time_spent() -> float:
 	return self._roommate_time_spent;
+
+func get_roommate_time_left() -> float:
+	return self._roommate.seconds_until_late - self._roommate_time_spent;
 
 func _physics_process(delta: float) -> void:
 	if self.has_all_roommates_exited:

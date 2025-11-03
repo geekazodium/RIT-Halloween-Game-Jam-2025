@@ -112,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1231444, -0.6334247, 0.909
 [node name="table" parent="." index="5" instance=ExtResource("6_w8qvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404864, -0.7085212, 1.4100178)
 _key = &"kitchen_table"
+time_to_interact = 1.0
 
 [node name="CupboardFront2" parent="." index="6" instance=ExtResource("8_hefk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.15, -2.4)
@@ -127,9 +128,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8038261, -0.70844173, -2.26
 
 [node name="counter2" parent="." index="10" instance=ExtResource("10_53nl4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.4249082, -0.7033603, -0.9)
+time_to_interact = 1.0
 
 [node name="counter" parent="." index="11" instance=ExtResource("10_53nl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.773, -0.69940054, -0.9)
+time_to_interact = 1.0
 
 [node name="Chair" parent="." index="12" instance=ExtResource("12_53nl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4559146, -0.696179, 1.3)

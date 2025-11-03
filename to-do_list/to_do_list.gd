@@ -35,6 +35,7 @@ func _on_task_status_updated(index: int, status: RoommateTask.TaskStatus) -> voi
 		$VBoxContainer.get_child(index).burnt_out()
 	
 func _process(_delta):
+	
 	var camera = get_viewport().get_camera_3d()
 	if camera:
 		var screen_pos = camera.unproject_position(player.global_position)

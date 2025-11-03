@@ -19,6 +19,7 @@ var item: Item = null:
 		if (self.item == null) == (value == null):
 			return;
 		if item != null:
+			#if item.is_inside_tree() && item.get_parent() == item_holder:
 			item_holder.remove_child(item);
 		else:
 			self.move_to_item_holder.call_deferred(value);
